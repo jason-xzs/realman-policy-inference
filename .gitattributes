@@ -1,0 +1,3 @@
+* text=auto
+*.so binary
+*.dll binary

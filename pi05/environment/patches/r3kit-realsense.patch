@@ -1,0 +1,109 @@
+diff --git a/r3kit/devices/camera/realsense/d415.py b/r3kit/devices/camera/realsense/d415.py
+index 44cf5c6..ab33ef6 100755
+--- a/r3kit/devices/camera/realsense/d415.py
++++ b/r3kit/devices/camera/realsense/d415.py
+@@ -12,26 +12,42 @@ import pyrealsense2 as rs
+ from r3kit.devices.camera.base import CameraBase
+ from r3kit.devices.camera.utils import inpaint
+ from r3kit.devices.camera.realsense.config import D415_ID, D415_STREAMS
+-from r3kit.utils.vis import draw_time, save_imgs, save_img
+ 
+ 
+ class D415(CameraBase):
+     STREAMS = D415_STREAMS
+     DEFAULT_ID = D415_ID
+ 
+-    def __init__(self, id:Optional[str]=None, depth:bool=True, name:str='D415') -> None:
++    def __init__(
++        self,
++        id: Optional[str] = None,
++        depth: bool = True,
++        name: str = 'D415',
++        color_width: Optional[int] = None,
++        color_height: Optional[int] = None,
++        color_fps: Optional[int] = None,
++    ) -> None:
+         super().__init__(name=name)
+         self._depth = depth
+         self._id = self.DEFAULT_ID if id is None else id
+ 
+         self.pipeline = rs.pipeline()
+         self.config = rs.config()
++        self._closed = False
+         if self._id is not None:
+             self.config.enable_device(self._id)
+         for stream_item in self.STREAMS:
+             if not depth and stream_item[0] == rs.stream.depth:
+                 continue
+-            self.config.enable_stream(*stream_item)
++            configured_stream = stream_item
++            if stream_item[0] == rs.stream.color and color_width is not None:
++                if color_height is None:
++                    raise ValueError("color_height is required when color_width is set")
++                configured_stream = (
++                    stream_item[0], int(color_width), int(color_height), stream_item[3],
++                    int(color_fps if color_fps is not None else stream_item[4]),
++                )
++            self.config.enable_stream(*configured_stream)
+         # NOTE: hard code config
+         self.align = rs.align(rs.stream.color)
+         # self.hole_filling = rs.hole_filling_filter()
+@@ -187,6 +203,9 @@ class D415(CameraBase):
+         return streaming_data
+     
+     def save_streaming(self, save_path:str, streaming_data:dict) -> None:
++        # Recording helpers pull in optional visualization dependencies. Live
++        # deployment capture does not need them, so import them only on demand.
++        from r3kit.utils.vis import draw_time, save_imgs
+         has_writer = False
+         for root, dirs, files in os.walk(f'./.temp/{self.name}'):
+             if len(files) > 0:
+@@ -232,6 +251,7 @@ class D415(CameraBase):
+             save_imgs(os.path.join(save_path, 'depth'), streaming_data["depth"], suffix='png', idx_bias=idx_bias)
+ 
+     def _write_streaming_data(self, save_path:str) -> None:
++        from r3kit.utils.vis import save_img
+         os.makedirs(save_path, exist_ok=True)
+         os.makedirs(os.path.join(save_path, 'color'), exist_ok=True)
+         if self._depth:
+@@ -400,8 +420,18 @@ class D415(CameraBase):
+             rgb = color_img.reshape(-1, 3)
+         return xyz, rgb
+ 
++    def close(self) -> None:
++        """Stop the RealSense pipeline once; safe during partial initialization."""
++        if getattr(self, "_closed", False):
++            return
++        self._closed = True
++        try:
++            self.pipeline.stop()
++        except RuntimeError:
++            pass
++
+     def __del__(self) -> None:
+-        self.pipeline.stop()
++        self.close()
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/r3kit/devices/camera/realsense/d435.py b/r3kit/devices/camera/realsense/d435.py
+index 7973bf8..73d51b4 100644
+--- a/r3kit/devices/camera/realsense/d435.py
++++ b/r3kit/devices/camera/realsense/d435.py
+@@ -10,5 +10,14 @@ class D435(D415):
+     STREAMS = D435_STREAMS
+     DEFAULT_ID = D435_ID
+ 
+-    def __init__(self, id: Optional[str] = None, depth: bool = True, name: str = "D435") -> None:
+-        super().__init__(id=id, depth=depth, name=name)
++    def __init__(
++        self,
++        id: Optional[str] = None,
++        depth: bool = True,
++        name: str = "D435",
++        color_width: Optional[int] = None,
++        color_height: Optional[int] = None,
++        color_fps: Optional[int] = None,
++    ) -> None:
++        super().__init__(id=id, depth=depth, name=name, color_width=color_width,
++                         color_height=color_height, color_fps=color_fps)

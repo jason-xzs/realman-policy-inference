@@ -1,0 +1,55 @@
+train: &realman_dataset
+  _target_: fastwam.datasets.hdf5_realman_dataset.RealManHDF5VideoDataset
+  dataset_dirs:
+    - /datasets/realman_rmc_aidal
+  manifest_path: ./data/realman_rmc_aidal/manifest.jsonl
+  selected_task_names: ${oc.select:realman_subset.train_task_names,null}
+  pretrained_norm_stats: ./data/realman_rmc_aidal/dataset_stats.json
+  control_indices: [0, 1, 2, 3, 4, 5, 6, 10, 50, 51, 52, 53, 54, 55, 56, 60] # right, left
+  shape_meta:
+    images:
+      - {key: cam_high, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: cam_left_wrist, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: cam_right_wrist, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+    action:
+      - {key: default, raw_shape: 16, shape: 16}
+    state:
+      - {key: default, raw_shape: 16, shape: 16}
+  num_frames: 33
+  action_video_freq_ratio: 4
+  video_size: [384, 320]
+  val_set_proportion: 0.01
+  is_training_set: true
+  skip_padding_as_possible: false
+  concat_multi_camera: robotwin
+  processor:
+    _target_: fastwam.datasets.lerobot.processors.fastwam_processor.FastWAMProcessor
+    shape_meta: ${data.train.shape_meta}
+    num_obs_steps: ${data.train.num_frames}
+    num_output_cameras: 3
+    action_output_dim: 16
+    proprio_output_dim: 16
+    action_state_transforms: null
+    use_stepwise_action_norm: false
+    norm_default_mode: z-score
+    norm_exception_mode: null
+    action_state_merger:
+      _target_: fastwam.datasets.lerobot.transforms.action_state_merger.ConcatLeftAlign
+    train_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.image.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [240, 320]
+    val_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.image.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [240, 320]
+  text_embedding_cache_dir: ./data/text_embeds_cache/realman_rmc_aidal
+  context_len: 128
+
+val:
+  <<: *realman_dataset
+  dataset_dirs: ${data.train.dataset_dirs}
+  manifest_path: ${data.train.manifest_path}
+  selected_task_names: ${data.train.selected_task_names}
+  pretrained_norm_stats: ${data.train.pretrained_norm_stats}
+  is_training_set: false

@@ -1,0 +1,1641 @@
+{
+  "export_date": "2026-11-12",
+  "files": [
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/__init__.py",
+      "path": "fastwam/src/fastwam/__init__.py",
+      "source_sha256": "c4149c5ff0f9abd1517360daf761e692feb8570eb7a0caa2dfde52d4412c3e23",
+      "export_sha256": "c4149c5ff0f9abd1517360daf761e692feb8570eb7a0caa2dfde52d4412c3e23"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/__init__.py",
+      "path": "fastwam/src/fastwam/datasets/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/dataset_utils.py",
+      "path": "fastwam/src/fastwam/datasets/dataset_utils.py",
+      "source_sha256": "3bc17590049c7cb54061acf8d731b07892e7f530c5d7eeac2613fa77a285a392",
+      "export_sha256": "3bc17590049c7cb54061acf8d731b07892e7f530c5d7eeac2613fa77a285a392"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/hdf5_realman_dataset.py",
+      "path": "fastwam/src/fastwam/datasets/hdf5_realman_dataset.py",
+      "source_sha256": "0a4af7124a50ff656d23a2911c95da04aa0eafd53ea8e21dde3915cc40fc0430",
+      "export_sha256": "0a4af7124a50ff656d23a2911c95da04aa0eafd53ea8e21dde3915cc40fc0430"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/base_lerobot_dataset.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/base_lerobot_dataset.py",
+      "source_sha256": "8a47ed739d439b4f4f93c25f38f789f26f57f83740dc4ce1d599f0cb7c31ad39",
+      "export_sha256": "8a47ed739d439b4f4f93c25f38f789f26f57f83740dc4ce1d599f0cb7c31ad39"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/constants.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/constants.py",
+      "source_sha256": "11ac9260341e1560c5eb0dd7acb79ed63c74180b8ab4113c27622ff213db417f",
+      "export_sha256": "11ac9260341e1560c5eb0dd7acb79ed63c74180b8ab4113c27622ff213db417f"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/lerobot/datasets/compute_stats.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/lerobot/datasets/compute_stats.py",
+      "source_sha256": "7d7daab219332b5abdfd5ec67ccaf3502e8eb583a17a4e482c3f3d4f7a691e89",
+      "export_sha256": "7d7daab219332b5abdfd5ec67ccaf3502e8eb583a17a4e482c3f3d4f7a691e89"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/lerobot/datasets/utils.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/lerobot/datasets/utils.py",
+      "source_sha256": "40f1b94e6ceb50765fb8dfa3d498887c2a0fc2eb49f09770c5f36190e7110c98",
+      "export_sha256": "40f1b94e6ceb50765fb8dfa3d498887c2a0fc2eb49f09770c5f36190e7110c98"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/lerobot/datasets/video_utils.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/lerobot/datasets/video_utils.py",
+      "source_sha256": "cb647a1e955c3279e39ce8d7af7a37ea7432bbd71534c183f9ceebc8557dd89f",
+      "export_sha256": "cb647a1e955c3279e39ce8d7af7a37ea7432bbd71534c183f9ceebc8557dd89f"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/lerobot/lerobot_dataset.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/lerobot/lerobot_dataset.py",
+      "source_sha256": "8cebced877327dd518dcc1d1e89cb566a9d93aa19089bb8c07fd02ece9c28b0f",
+      "export_sha256": "8cebced877327dd518dcc1d1e89cb566a9d93aa19089bb8c07fd02ece9c28b0f"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/processors/base_processor.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/processors/base_processor.py",
+      "source_sha256": "1f47bc85fee11e3d16714b2f1e3a2dc874f4609a1706a788617156d34b48b58e",
+      "export_sha256": "1f47bc85fee11e3d16714b2f1e3a2dc874f4609a1706a788617156d34b48b58e"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/processors/fastwam_processor.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/processors/fastwam_processor.py",
+      "source_sha256": "d71bd147c6594ee9d1a50c04d22fa69ccb914d601c4ad816233496f5b583fda5",
+      "export_sha256": "d71bd147c6594ee9d1a50c04d22fa69ccb914d601c4ad816233496f5b583fda5"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/robot_video_dataset.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/robot_video_dataset.py",
+      "source_sha256": "8468b980aa6e9c88080a35551810e8c8cc738962a10d677b677d2f49653751c2",
+      "export_sha256": "8468b980aa6e9c88080a35551810e8c8cc738962a10d677b677d2f49653751c2"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/robotwin_task_mapping.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/robotwin_task_mapping.py",
+      "source_sha256": "5e342d22d61767c60dbacf55b81396552bf3abcff5f63d13471830d08cba2113",
+      "export_sha256": "5e342d22d61767c60dbacf55b81396552bf3abcff5f63d13471830d08cba2113"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/action_state_merger.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/action_state_merger.py",
+      "source_sha256": "669d6991415fc5eca44b32b129d15fee1e06e2f17d59d90350c252598033b427",
+      "export_sha256": "669d6991415fc5eca44b32b129d15fee1e06e2f17d59d90350c252598033b427"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/image.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/image.py",
+      "source_sha256": "4d7ab61d0844918525244db653831f0f632730046b2714a6163ff57c441a16fa",
+      "export_sha256": "4d7ab61d0844918525244db653831f0f632730046b2714a6163ff57c441a16fa"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/misc.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/misc.py",
+      "source_sha256": "8b505bd9e3a54ab2db7efcd64f0929d2e0303f5db1123de1074fd01fa9887e2b",
+      "export_sha256": "8b505bd9e3a54ab2db7efcd64f0929d2e0303f5db1123de1074fd01fa9887e2b"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/realman.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/realman.py",
+      "source_sha256": "708db124d92a6b7b7bd51ba2ca296017d526ef5c872eafd7f302487c947564bc",
+      "export_sha256": "708db124d92a6b7b7bd51ba2ca296017d526ef5c872eafd7f302487c947564bc"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/relative_action.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/relative_action.py",
+      "source_sha256": "e555e0558e948c4eea3d1119e274fa5d923af30862eec4380fb8528f4a319c47",
+      "export_sha256": "e555e0558e948c4eea3d1119e274fa5d923af30862eec4380fb8528f4a319c47"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/transforms/rotation.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/transforms/rotation.py",
+      "source_sha256": "0de34b252d60b956cda07c0c19baebbd3c8a28916face700c6664c5815e11e91",
+      "export_sha256": "0de34b252d60b956cda07c0c19baebbd3c8a28916face700c6664c5815e11e91"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/utils/normalizer.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/utils/normalizer.py",
+      "source_sha256": "5ac89a646cd6395e98feaa832f8fdf7c7e00857080af3d9c15710e243c43ad43",
+      "export_sha256": "5ac89a646cd6395e98feaa832f8fdf7c7e00857080af3d9c15710e243c43ad43"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/datasets/lerobot/utils/rotation.py",
+      "path": "fastwam/src/fastwam/datasets/lerobot/utils/rotation.py",
+      "source_sha256": "6169162f98faf02a3fe5201e2b8a1069fe299840d036ee7cad8af5fa8f561542",
+      "export_sha256": "6169162f98faf02a3fe5201e2b8a1069fe299840d036ee7cad8af5fa8f561542"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/__init__.py",
+      "path": "fastwam/src/fastwam/models/__init__.py",
+      "source_sha256": "ae4c5733f4bbf7caf31df2ae6f789516f6a10cd84a321f7d0375a7034253ac6d",
+      "export_sha256": "ae4c5733f4bbf7caf31df2ae6f789516f6a10cd84a321f7d0375a7034253ac6d"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/__init__.py",
+      "path": "fastwam/src/fastwam/models/wan22/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/action_dit.py",
+      "path": "fastwam/src/fastwam/models/wan22/action_dit.py",
+      "source_sha256": "1365fd710a6103bb8c3950cea2aa0b13ac76b87383c24134abc9587aa97b0e62",
+      "export_sha256": "1365fd710a6103bb8c3950cea2aa0b13ac76b87383c24134abc9587aa97b0e62"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/delta_dit.py",
+      "path": "fastwam/src/fastwam/models/wan22/delta_dit.py",
+      "source_sha256": "90fd67ec718bae66306613f3ea21120305403256b85c291b84e8b18c27781953",
+      "export_sha256": "90fd67ec718bae66306613f3ea21120305403256b85c291b84e8b18c27781953"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/delta_tokenizer.py",
+      "path": "fastwam/src/fastwam/models/wan22/delta_tokenizer.py",
+      "source_sha256": "5cbd2a21f0973f9e324a9addcfb1c04ff9e1c32d831446d645ffe1521b2260ca",
+      "export_sha256": "5cbd2a21f0973f9e324a9addcfb1c04ff9e1c32d831446d645ffe1521b2260ca"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/deltatok.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/deltatok.py",
+      "source_sha256": "d10fdc362c1213558a2f5f85226ecec6b5db3a93f730ef4db8415b5550c6d769",
+      "export_sha256": "d10fdc362c1213558a2f5f85226ecec6b5db3a93f730ef4db8415b5550c6d769"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/deltaworld.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/deltaworld.py",
+      "source_sha256": "2c9b4640e1d191602dc5b54247f820785c0b0b52c3be95e87880cec97c1525ba",
+      "export_sha256": "2c9b4640e1d191602dc5b54247f820785c0b0b52c3be95e87880cec97c1525ba"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/dinov3.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/dinov3.py",
+      "source_sha256": "31c3814f26d1aab0c8e79fd250e31320b94225491df2dc30b142b23eae7beeec",
+      "export_sha256": "31c3814f26d1aab0c8e79fd250e31320b94225491df2dc30b142b23eae7beeec"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/dinoworld.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/dinoworld.py",
+      "source_sha256": "35da0ed538b1c820ff997e57647bfc3d248b1f2ee817bf574d1983cf4d10a6ea",
+      "export_sha256": "35da0ed538b1c820ff997e57647bfc3d248b1f2ee817bf574d1983cf4d10a6ea"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/gated_attn.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/gated_attn.py",
+      "source_sha256": "e18044d80e44937a7c67f793e72dfebd9efccf423827dd3c59f9e76dccb7548a",
+      "export_sha256": "e18044d80e44937a7c67f793e72dfebd9efccf423827dd3c59f9e76dccb7548a"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/predictor.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/predictor.py",
+      "source_sha256": "92edb3b9151446c105ebee1a557f6f7238fa5081217864d4dd13567058d57ce5",
+      "export_sha256": "92edb3b9151446c105ebee1a557f6f7238fa5081217864d4dd13567058d57ce5"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/qk_norm.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/qk_norm.py",
+      "source_sha256": "20d0a3c6779f8e9ad7aa99128758fe5d14244ec46949c34cdf9a99bf2f24a56d",
+      "export_sha256": "20d0a3c6779f8e9ad7aa99128758fe5d14244ec46949c34cdf9a99bf2f24a56d"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/task_heads.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/task_heads.py",
+      "source_sha256": "82853f0fc18a0b7abd91e0c72da462a584072cfdb972322658117c9b2cfa829c",
+      "export_sha256": "82853f0fc18a0b7abd91e0c72da462a584072cfdb972322658117c9b2cfa829c"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltatok/models/world.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltatok/models/world.py",
+      "source_sha256": "f728e45fed0a99babbff4375a56d511e312ca88f32b576e74be07af218bac462",
+      "export_sha256": "f728e45fed0a99babbff4375a56d511e312ca88f32b576e74be07af218bac462"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltawam.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltawam.py",
+      "source_sha256": "b138f21d1b780d44c96197b456b69cb104e5e18ef38e7c33c5e240fd84a3eee1",
+      "export_sha256": "b138f21d1b780d44c96197b456b69cb104e5e18ef38e7c33c5e240fd84a3eee1"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/deltawam_joint.py",
+      "path": "fastwam/src/fastwam/models/wan22/deltawam_joint.py",
+      "source_sha256": "d377543f560f4222aeaec9021b658288d3907a81ed7e91e91a5d37b60ec96faa",
+      "export_sha256": "d377543f560f4222aeaec9021b658288d3907a81ed7e91e91a5d37b60ec96faa"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/fastwam.py",
+      "path": "fastwam/src/fastwam/models/wan22/fastwam.py",
+      "source_sha256": "b23e69bcb3b41ce096b848c5586d1031100a3f9ec7151b387c4a67255387976e",
+      "export_sha256": "b23e69bcb3b41ce096b848c5586d1031100a3f9ec7151b387c4a67255387976e"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/fastwam_idm.py",
+      "path": "fastwam/src/fastwam/models/wan22/fastwam_idm.py",
+      "source_sha256": "aae332d17645a6744aafd85edde8e8d7dacbb8b110de3988015ca330146c3c65",
+      "export_sha256": "aae332d17645a6744aafd85edde8e8d7dacbb8b110de3988015ca330146c3c65"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/fastwam_joint.py",
+      "path": "fastwam/src/fastwam/models/wan22/fastwam_joint.py",
+      "source_sha256": "35bf9bceba78b5c49b6655e5e103fce3566595fce31974a5da54a35ddc3a2ffb",
+      "export_sha256": "35bf9bceba78b5c49b6655e5e103fce3566595fce31974a5da54a35ddc3a2ffb"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/helpers/__init__.py",
+      "path": "fastwam/src/fastwam/models/wan22/helpers/__init__.py",
+      "source_sha256": "f26116de229557a37a4812dc4ee75971f5f9e8b80240786ea4d0e5b0ff703cbf",
+      "export_sha256": "f26116de229557a37a4812dc4ee75971f5f9e8b80240786ea4d0e5b0ff703cbf"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/helpers/gradient.py",
+      "path": "fastwam/src/fastwam/models/wan22/helpers/gradient.py",
+      "source_sha256": "ba5d8f7272eb029dc6cd2849ca99b70f6ad5abb838d21c818beb0590620dc793",
+      "export_sha256": "ba5d8f7272eb029dc6cd2849ca99b70f6ad5abb838d21c818beb0590620dc793"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/helpers/io.py",
+      "path": "fastwam/src/fastwam/models/wan22/helpers/io.py",
+      "source_sha256": "1c6c1bc8a975b47092912833194fce25e2e3ac886fbab72d73af3ff5a00b3c62",
+      "export_sha256": "1c6c1bc8a975b47092912833194fce25e2e3ac886fbab72d73af3ff5a00b3c62"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/helpers/loader.py",
+      "path": "fastwam/src/fastwam/models/wan22/helpers/loader.py",
+      "source_sha256": "792f66bd0609c1365256aa24d43301340f81260c1651d89b04d2ae8224a08726",
+      "export_sha256": "792f66bd0609c1365256aa24d43301340f81260c1651d89b04d2ae8224a08726"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/helpers/state_dict_converters.py",
+      "path": "fastwam/src/fastwam/models/wan22/helpers/state_dict_converters.py",
+      "source_sha256": "81d213373e5056a8d8bf31768b9b04164138ea78d0b306e316334841499f4bf9",
+      "export_sha256": "81d213373e5056a8d8bf31768b9b04164138ea78d0b306e316334841499f4bf9"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/lam/model.py",
+      "path": "fastwam/src/fastwam/models/wan22/lam/model.py",
+      "source_sha256": "f904d2de41755d4335d7b6bf2eaeb14e5a64edd463831161aa16431ffa3edb07",
+      "export_sha256": "f904d2de41755d4335d7b6bf2eaeb14e5a64edd463831161aa16431ffa3edb07"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/lam/modules/__init__.py",
+      "path": "fastwam/src/fastwam/models/wan22/lam/modules/__init__.py",
+      "source_sha256": "3a9f016c8695d950f6e2c6ea3076df564fa53e7b61309d89621c2eb0db12d172",
+      "export_sha256": "3a9f016c8695d950f6e2c6ea3076df564fa53e7b61309d89621c2eb0db12d172"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/lam/modules/blocks.py",
+      "path": "fastwam/src/fastwam/models/wan22/lam/modules/blocks.py",
+      "source_sha256": "223f0eaf8f4d2e9a2bc077050522bf32ef17e3fe4ae81c697fd507bada58c7cf",
+      "export_sha256": "223f0eaf8f4d2e9a2bc077050522bf32ef17e3fe4ae81c697fd507bada58c7cf"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/lam/modules/embeddings.py",
+      "path": "fastwam/src/fastwam/models/wan22/lam/modules/embeddings.py",
+      "source_sha256": "b555a1b7d003a721a70547badfb8b74255b983e466cb58fb671903903a3f53d2",
+      "export_sha256": "b555a1b7d003a721a70547badfb8b74255b983e466cb58fb671903903a3f53d2"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/lam/modules/lam.py",
+      "path": "fastwam/src/fastwam/models/wan22/lam/modules/lam.py",
+      "source_sha256": "3c8c57a85672b4bafa5b0ed5a996af30fd58b39e31f2fa2ca3952ef12aeed1af",
+      "export_sha256": "3c8c57a85672b4bafa5b0ed5a996af30fd58b39e31f2fa2ca3952ef12aeed1af"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/mot.py",
+      "path": "fastwam/src/fastwam/models/wan22/mot.py",
+      "source_sha256": "74106cfc5a397930409a5a47963267b0e3f8ee0147ab9aa78753d650f1c7a705",
+      "export_sha256": "74106cfc5a397930409a5a47963267b0e3f8ee0147ab9aa78753d650f1c7a705"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/schedulers/scheduler_continuous.py",
+      "path": "fastwam/src/fastwam/models/wan22/schedulers/scheduler_continuous.py",
+      "source_sha256": "2ececce284f7b9fe876965fbf5e11ca7b69caaf693979266b0f63062a589f181",
+      "export_sha256": "2ececce284f7b9fe876965fbf5e11ca7b69caaf693979266b0f63062a589f181"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/wan22.py",
+      "path": "fastwam/src/fastwam/models/wan22/wan22.py",
+      "source_sha256": "b72998999b4b2c5096773092339b8ca81e9e7d96f398b81c57d3d22d14972ac4",
+      "export_sha256": "b72998999b4b2c5096773092339b8ca81e9e7d96f398b81c57d3d22d14972ac4"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/wan_video_dit.py",
+      "path": "fastwam/src/fastwam/models/wan22/wan_video_dit.py",
+      "source_sha256": "d098ad77665feeefa81634f31f5bb1d5771c4556d1a67859135f0ed35f9eb6c2",
+      "export_sha256": "d098ad77665feeefa81634f31f5bb1d5771c4556d1a67859135f0ed35f9eb6c2"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/wan_video_text_encoder.py",
+      "path": "fastwam/src/fastwam/models/wan22/wan_video_text_encoder.py",
+      "source_sha256": "aedf7f131556a39b99a273deec3a85d67f41b5367cef41f310f33a807ae60a87",
+      "export_sha256": "aedf7f131556a39b99a273deec3a85d67f41b5367cef41f310f33a807ae60a87"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/models/wan22/wan_video_vae.py",
+      "path": "fastwam/src/fastwam/models/wan22/wan_video_vae.py",
+      "source_sha256": "31b3fb9f844a76f5db5af4854e14802aae640b85b61d0de03a4b53b52515abb7",
+      "export_sha256": "31b3fb9f844a76f5db5af4854e14802aae640b85b61d0de03a4b53b52515abb7"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/runtime.py",
+      "path": "fastwam/src/fastwam/runtime.py",
+      "source_sha256": "56b459aa32bc32f3192a3e59cfa0fade57c57b95686041ae3ff00e6cffb79cbf",
+      "export_sha256": "56b459aa32bc32f3192a3e59cfa0fade57c57b95686041ae3ff00e6cffb79cbf"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/trainer.py",
+      "path": "fastwam/src/fastwam/trainer.py",
+      "source_sha256": "f92d05c3ad4aad8732595b4a9064ca678ab1e58efcbad0d6b671e980a47303b5",
+      "export_sha256": "f92d05c3ad4aad8732595b4a9064ca678ab1e58efcbad0d6b671e980a47303b5"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/__init__.py",
+      "path": "fastwam/src/fastwam/utils/__init__.py",
+      "source_sha256": "2893c05b99b17162941c70a41859c2808f8ae390be367a26cac7d5ab93ee197b",
+      "export_sha256": "2893c05b99b17162941c70a41859c2808f8ae390be367a26cac7d5ab93ee197b"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/config_resolvers.py",
+      "path": "fastwam/src/fastwam/utils/config_resolvers.py",
+      "source_sha256": "01c48cbd42b86e636b70ccc3e193a81147162ba890777102b2c61086fa415340",
+      "export_sha256": "01c48cbd42b86e636b70ccc3e193a81147162ba890777102b2c61086fa415340"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/fs.py",
+      "path": "fastwam/src/fastwam/utils/fs.py",
+      "source_sha256": "69e6df236b43360428a613686c8f37c531c0d16a3a2c5b06a725c46b49d657c5",
+      "export_sha256": "69e6df236b43360428a613686c8f37c531c0d16a3a2c5b06a725c46b49d657c5"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/logging_config.py",
+      "path": "fastwam/src/fastwam/utils/logging_config.py",
+      "source_sha256": "cadc4f6ad487c3f37171a6defad36d23d9ab8bf262f73a461cd9ee9b03b757e7",
+      "export_sha256": "cadc4f6ad487c3f37171a6defad36d23d9ab8bf262f73a461cd9ee9b03b757e7"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/misc.py",
+      "path": "fastwam/src/fastwam/utils/misc.py",
+      "source_sha256": "05aa51247936a8d3faac27f90b78b65ff83a688259bed55d114b6a617ced532d",
+      "export_sha256": "05aa51247936a8d3faac27f90b78b65ff83a688259bed55d114b6a617ced532d"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/pytorch_utils.py",
+      "path": "fastwam/src/fastwam/utils/pytorch_utils.py",
+      "source_sha256": "ffc483e7fb435cd654326750eaffdbfc9243837c3140dcc74e45b24abb751a33",
+      "export_sha256": "ffc483e7fb435cd654326750eaffdbfc9243837c3140dcc74e45b24abb751a33"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/samplers.py",
+      "path": "fastwam/src/fastwam/utils/samplers.py",
+      "source_sha256": "4d3bd9b2d498f4ad8f2cf9765d60c4bf5368fa6fa2a7d42d0db6210f66899652",
+      "export_sha256": "4d3bd9b2d498f4ad8f2cf9765d60c4bf5368fa6fa2a7d42d0db6210f66899652"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/video_io.py",
+      "path": "fastwam/src/fastwam/utils/video_io.py",
+      "source_sha256": "9e9898b021a44e87aa1b4e6d13e3755a9869a2e27a7eb53c72a6802808d5bd80",
+      "export_sha256": "9e9898b021a44e87aa1b4e6d13e3755a9869a2e27a7eb53c72a6802808d5bd80"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/fastwam/utils/video_metrics.py",
+      "path": "fastwam/src/fastwam/utils/video_metrics.py",
+      "source_sha256": "aaa37e458cc9e4bb79a17923b5ff5900c97b4309f7abd50db44cf76e9143ffd6",
+      "export_sha256": "aaa37e458cc9e4bb79a17923b5ff5900c97b4309f7abd50db44cf76e9143ffd6"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/README.md",
+      "path": "fastwam/src/realman_deployment/README.md",
+      "source_sha256": "54984729dc993730163eae978a4d7a596443d0c7d7157a2cc24ab76c9eb33a3d",
+      "export_sha256": "b2be3353200c86a0e61e6def064821e38f5a227fbf95e375522c98dfe0913bdb"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/__init__.py",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/libs/linux_arm/libapi_c.so",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/libs/linux_arm/libapi_c.so",
+      "source_sha256": "5b9d236a5cf901cdf05418d9ef5815a77a8c717af0ff037e7aad9247beb76fb9",
+      "export_sha256": "5b9d236a5cf901cdf05418d9ef5815a77a8c717af0ff037e7aad9247beb76fb9"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/libs/linux_x86/libapi_c.so",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/libs/linux_x86/libapi_c.so",
+      "source_sha256": "6a5d96ff8144d04a5058e77ef37bf7da72904e4a336921eb1917c72a3772a036",
+      "export_sha256": "6a5d96ff8144d04a5058e77ef37bf7da72904e4a336921eb1917c72a3772a036"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/libs/win_32/api_c.dll",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/libs/win_32/api_c.dll",
+      "source_sha256": "3549051ebecdd0886f75dde42ca1e99d3fc1225c7550312af763bedab4571ab1",
+      "export_sha256": "3549051ebecdd0886f75dde42ca1e99d3fc1225c7550312af763bedab4571ab1"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/libs/win_64/api_c.dll",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/libs/win_64/api_c.dll",
+      "source_sha256": "c0c33d16aef9f8a07711c78adf2f664258061a77ec909ecd56a340dd4a97cae7",
+      "export_sha256": "c0c33d16aef9f8a07711c78adf2f664258061a77ec909ecd56a340dd4a97cae7"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/rm_ctypes_wrap.py",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/rm_ctypes_wrap.py",
+      "source_sha256": "6d31db234d0f390ec2106d088765245f0705d17c8bfd756e51ff48f69e193ac6",
+      "export_sha256": "6d31db234d0f390ec2106d088765245f0705d17c8bfd756e51ff48f69e193ac6"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/rm_robot_interface.py",
+      "path": "fastwam/src/realman_deployment/Robotic_Arm/rm_robot_interface.py",
+      "source_sha256": "3fffdcbc4448b24d8dd9ad0a415988f892ed4daa7e5d5c78b39830b06ba13420",
+      "export_sha256": "3fffdcbc4448b24d8dd9ad0a415988f892ed4daa7e5d5c78b39830b06ba13420"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/__init__.py",
+      "path": "fastwam/src/realman_deployment/__init__.py",
+      "source_sha256": "bb03c3c47f30a7b22af3ef24e297c118b578f6e7f8f92ada08f3ab766c9d9a8b",
+      "export_sha256": "bb03c3c47f30a7b22af3ef24e297c118b578f6e7f8f92ada08f3ab766c9d9a8b"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/client.py",
+      "path": "fastwam/src/realman_deployment/client.py",
+      "source_sha256": "2495a053f6ac48cdf57924abac25205de57ee6ebd00cd9c579bbb4270d68d5ec",
+      "export_sha256": "2495a053f6ac48cdf57924abac25205de57ee6ebd00cd9c579bbb4270d68d5ec"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/hardware.py",
+      "path": "fastwam/src/realman_deployment/hardware.py",
+      "source_sha256": "db878ed3f7f28f7188118520f08b3bafe6b32db968ce093e859ff7fd01b1f800",
+      "export_sha256": "db878ed3f7f28f7188118520f08b3bafe6b32db968ce093e859ff7fd01b1f800"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/policy.py",
+      "path": "fastwam/src/realman_deployment/policy.py",
+      "source_sha256": "81dd35b0c99981e87a12461ffcc24fdda44c1f2698f739a17b1feb4f93efbf29",
+      "export_sha256": "81dd35b0c99981e87a12461ffcc24fdda44c1f2698f739a17b1feb4f93efbf29"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/protocol.py",
+      "path": "fastwam/src/realman_deployment/protocol.py",
+      "source_sha256": "43be9600075756cb0e14f11f95c87b1dab353b11e9f8800828dc67fa252ae5ac",
+      "export_sha256": "43be9600075756cb0e14f11f95c87b1dab353b11e9f8800828dc67fa252ae5ac"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/.gitignore",
+      "path": "fastwam/src/realman_deployment/r3kit/.gitignore",
+      "source_sha256": "6bc4ee51ff94ae03088fcd055266c6234cc01a0a889aed801d6afa3e89f79b15",
+      "export_sha256": "6bc4ee51ff94ae03088fcd055266c6234cc01a0a889aed801d6afa3e89f79b15"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/MANIFEST.in",
+      "path": "fastwam/src/realman_deployment/r3kit/MANIFEST.in",
+      "source_sha256": "f160199b2f0fde5326e420ffe052eb365f4b4b1fe18c9c273a1b49650afa9bb7",
+      "export_sha256": "f160199b2f0fde5326e420ffe052eb365f4b4b1fe18c9c273a1b49650afa9bb7"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/README.md",
+      "path": "fastwam/src/realman_deployment/r3kit/README.md",
+      "source_sha256": "660ee279c097eba8e171eef7819c805f52cd76cf348aa90f85cc19a4a3e011ba",
+      "export_sha256": "660ee279c097eba8e171eef7819c805f52cd76cf348aa90f85cc19a4a3e011ba"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/algo_calib_tcp.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/algo_calib_tcp.md",
+      "source_sha256": "4e8023e150924f345c604cf896c37e6f55706bad2dc659a91a50cda42c25de0e",
+      "export_sha256": "4e8023e150924f345c604cf896c37e6f55706bad2dc659a91a50cda42c25de0e"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/algo_tare_linear.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/algo_tare_linear.md",
+      "source_sha256": "821cd84fee66ced3cafd32e855ebf380282032635fcebb4e823730055ab84692",
+      "export_sha256": "821cd84fee66ced3cafd32e855ebf380282032635fcebb4e823730055ab84692"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_camera_realsense.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_camera_realsense.md",
+      "source_sha256": "a36bf4169e3af9ee5b9e5b164d79a46f4c22a40cd5a1a9883039095b5f4120e2",
+      "export_sha256": "a36bf4169e3af9ee5b9e5b164d79a46f4c22a40cd5a1a9883039095b5f4120e2"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_camera_vive_ultimate.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_camera_vive_ultimate.md",
+      "source_sha256": "572a6476b8cd24db7505cda9959f4982104cdab90bd3284afed117a92ebf2313",
+      "export_sha256": "572a6476b8cd24db7505cda9959f4982104cdab90bd3284afed117a92ebf2313"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_encoder_pdcd_angle.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_encoder_pdcd_angle.md",
+      "source_sha256": "7b0fcad718d13ca19a006b44bb0232d7c448ed48b0072ba32bf913f54675f97e",
+      "export_sha256": "7b0fcad718d13ca19a006b44bb0232d7c448ed48b0072ba32bf913f54675f97e"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_ftsensor_flexiv_pyft.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_ftsensor_flexiv_pyft.md",
+      "source_sha256": "adfccd94224e0c6a76fc3f0cd45ca0bfc342ebcd612fe93fe2c03a155827ffcb",
+      "export_sha256": "adfccd94224e0c6a76fc3f0cd45ca0bfc342ebcd612fe93fe2c03a155827ffcb"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_ftsensor_robotiq_ft300.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_ftsensor_robotiq_ft300.md",
+      "source_sha256": "5ac992d337fed48cc48a6bcaa1490e2adfebd43615340c5fadd737449a0df46e",
+      "export_sha256": "5ac992d337fed48cc48a6bcaa1490e2adfebd43615340c5fadd737449a0df46e"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_robot_flexiv.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_robot_flexiv.md",
+      "source_sha256": "ae905791d0ef5ef70778d3b9d4ad585ca3bb19e7f443da20c747d9bfdd3741f9",
+      "export_sha256": "ae905791d0ef5ef70778d3b9d4ad585ca3bb19e7f443da20c747d9bfdd3741f9"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/docs/device_robot_franka_panda.md",
+      "path": "fastwam/src/realman_deployment/r3kit/docs/device_robot_franka_panda.md",
+      "source_sha256": "c81d083a01983dfe85b192ff72998218b4b3d2bde59a9b68bde03aa07a4cd306",
+      "export_sha256": "c81d083a01983dfe85b192ff72998218b4b3d2bde59a9b68bde03aa07a4cd306"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/arucoext.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/arucoext.py",
+      "source_sha256": "fa8a4319aba7f5310aadeef359ad1f572716227f9f30c2f1be9cb57998cd52fb",
+      "export_sha256": "fa8a4319aba7f5310aadeef359ad1f572716227f9f30c2f1be9cb57998cd52fb"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/chessboard.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/chessboard.py",
+      "source_sha256": "5a8132dc1923acf75f22ae7da798f0996ff090ce675d485dd42ee486b97a10c6",
+      "export_sha256": "5a8132dc1923acf75f22ae7da798f0996ff090ce675d485dd42ee486b97a10c6"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/config.py",
+      "source_sha256": "e97a70644611b71ca5731c69db70e03070c50e33882fdb52a26d7583fd08c3be",
+      "export_sha256": "e97a70644611b71ca5731c69db70e03070c50e33882fdb52a26d7583fd08c3be"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/handeye.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/handeye.py",
+      "source_sha256": "300b0784fcaa8b53510757286f6fa12c912b38b5410a50bbd0fa735114ac1f44",
+      "export_sha256": "300b0784fcaa8b53510757286f6fa12c912b38b5410a50bbd0fa735114ac1f44"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/tcp.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/tcp.py",
+      "source_sha256": "679d19a670a5ae2c72bf8b74333b2f2e311f9e4a532a3d1b78a849ce0023852b",
+      "export_sha256": "679d19a670a5ae2c72bf8b74333b2f2e311f9e4a532a3d1b78a849ce0023852b"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/calib/utils.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/calib/utils.py",
+      "source_sha256": "7648a8c87590fad241bbf24996c2b2a0268d7b1d9d2e5eedb97f46d85afdc75c",
+      "export_sha256": "7648a8c87590fad241bbf24996c2b2a0268d7b1d9d2e5eedb97f46d85afdc75c"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/lstsq.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/lstsq.py",
+      "source_sha256": "3787b3263e6629b811b15670dce533410ac3703c0e66dbf642d2f9d6672bd349",
+      "export_sha256": "3787b3263e6629b811b15670dce533410ac3703c0e66dbf642d2f9d6672bd349"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/tare/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/tare/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/algos/tare/linear.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/algos/tare/linear.py",
+      "source_sha256": "9f874e0ed196a17d70ed4b14be4180adf9b26c40724a5a8c12b72b1df403a9f4",
+      "export_sha256": "9f874e0ed196a17d70ed4b14be4180adf9b26c40724a5a8c12b72b1df403a9f4"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/base.py",
+      "source_sha256": "7c62273778c2cce868aa034f29abc6ac67e28ad4be95bff6b6535c40c51816b1",
+      "export_sha256": "7c62273778c2cce868aa034f29abc6ac67e28ad4be95bff6b6535c40c51816b1"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/base.py",
+      "source_sha256": "dba9a71ffb57854fec1ae7a8a38a56d72243d1851c909b4775cee92a965dfb4f",
+      "export_sha256": "dba9a71ffb57854fec1ae7a8a38a56d72243d1851c909b4775cee92a965dfb4f"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/config.py",
+      "source_sha256": "481a2e9bfe6e2e49c8bedd371d5077fa81914305a6e4b16828e3f2e624a633e9",
+      "export_sha256": "481a2e9bfe6e2e49c8bedd371d5077fa81914305a6e4b16828e3f2e624a633e9"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d405.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d405.py",
+      "source_sha256": "c70b1f58125fa5e51b3659a1581685b8c9344f574c92ee6ad301c7e3eee06b69",
+      "export_sha256": "c70b1f58125fa5e51b3659a1581685b8c9344f574c92ee6ad301c7e3eee06b69"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d415.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d415.py",
+      "source_sha256": "5a091e5cd698dba92cabddde1e94f22517d3f836abb3dbe474463ac56697fa2a",
+      "export_sha256": "5a091e5cd698dba92cabddde1e94f22517d3f836abb3dbe474463ac56697fa2a"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d415.py.orig",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d415.py.orig",
+      "source_sha256": "2a2f8e0229c69b671d45717a15c303a69f4ffbc46efb8b66c94b2626047a8337",
+      "export_sha256": "2a2f8e0229c69b671d45717a15c303a69f4ffbc46efb8b66c94b2626047a8337"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d435.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d435.py",
+      "source_sha256": "00de8c34fe33ab7c72885bfb39fab9cf492bcbec6457702b9d76a0f336d89cab",
+      "export_sha256": "00de8c34fe33ab7c72885bfb39fab9cf492bcbec6457702b9d76a0f336d89cab"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d435.py.orig",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/d435.py.orig",
+      "source_sha256": "27d1af46e3bf2b9d36d4f354ccc3df2af2330fa59dccb3cbfc9902b46fa2e3d3",
+      "export_sha256": "27d1af46e3bf2b9d36d4f354ccc3df2af2330fa59dccb3cbfc9902b46fa2e3d3"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/l515.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/l515.py",
+      "source_sha256": "442fc721f4c5ebccb02c7a7bb701745fbf25254fe2f7fcd748f022f97bcc2f16",
+      "export_sha256": "442fc721f4c5ebccb02c7a7bb701745fbf25254fe2f7fcd748f022f97bcc2f16"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/t265.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/realsense/t265.py",
+      "source_sha256": "0e631c261ae456e490478c2afc9ff2bfe66ac288e6c6fc446bcda21097bdddd5",
+      "export_sha256": "0e631c261ae456e490478c2afc9ff2bfe66ac288e6c6fc446bcda21097bdddd5"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/utils.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/utils.py",
+      "source_sha256": "835db4fafafad51371f1941706e69ae1e9097c4e8a219b6bb41140b430b7a590",
+      "export_sha256": "835db4fafafad51371f1941706e69ae1e9097c4e8a219b6bb41140b430b7a590"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/config.py",
+      "source_sha256": "ff5e978e2fd1b4d0de98d11040a4a273d70e433aca14c7548fd85d170157876d",
+      "export_sha256": "ff5e978e2fd1b4d0de98d11040a4a273d70e433aca14c7548fd85d170157876d"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/context_object.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/context_object.py",
+      "source_sha256": "aa7a7db6ebc324b1e088084f6402f02ef9dc5491910588a20e7bc0d5c91d35b8",
+      "export_sha256": "aa7a7db6ebc324b1e088084f6402f02ef9dc5491910588a20e7bc0d5c91d35b8"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/ultimate.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/camera/vive/ultimate.py",
+      "source_sha256": "c9daaa42dc4019d338018bf9d2869df467008b49707c3c4472fa3100e4be340a",
+      "export_sha256": "c9daaa42dc4019d338018bf9d2869df467008b49707c3c4472fa3100e4be340a"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/encoder/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/encoder/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/encoder/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/encoder/base.py",
+      "source_sha256": "560ca2296d4b8c1806bc7337f6faf4bd0cb7d89951927784319d383231937e30",
+      "export_sha256": "560ca2296d4b8c1806bc7337f6faf4bd0cb7d89951927784319d383231937e30"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/angler.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/angler.py",
+      "source_sha256": "935de49229e54fbcd0f114e4b21e9d0f2da26d4b6d4aa432b66da70e0aa33793",
+      "export_sha256": "935de49229e54fbcd0f114e4b21e9d0f2da26d4b6d4aa432b66da70e0aa33793"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/encoder/pdcd/config.py",
+      "source_sha256": "2fa33682e5ff61034b569073ceee36aba3d98ba1ebda2486543c6937dc35e0e6",
+      "export_sha256": "2fa33682e5ff61034b569073ceee36aba3d98ba1ebda2486543c6937dc35e0e6"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/config.py",
+      "source_sha256": "2664fe731782d3b61d23e54bb8a6e70cb0ebe6a05f3b2e61d0ff14ed09db1d18",
+      "export_sha256": "2664fe731782d3b61d23e54bb8a6e70cb0ebe6a05f3b2e61d0ff14ed09db1d18"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/pyati.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/ati/pyati.py",
+      "source_sha256": "a558eea91338aea0427f0965e4c8f3ceb3a8a734c02bca9145b633cb3258ce64",
+      "export_sha256": "a558eea91338aea0427f0965e4c8f3ceb3a8a734c02bca9145b633cb3258ce64"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/base.py",
+      "source_sha256": "2dea655134473dd588bbce30e2b40f47fba042c9a7b8c09e4cd2013c2e159228",
+      "export_sha256": "2dea655134473dd588bbce30e2b40f47fba042c9a7b8c09e4cd2013c2e159228"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/config.py",
+      "source_sha256": "68123edbcce5cad28187d9752fa9caa84b6c1921f3ec6766bab2f772bc7020fe",
+      "export_sha256": "68123edbcce5cad28187d9752fa9caa84b6c1921f3ec6766bab2f772bc7020fe"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/pyft.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/flexiv/pyft.py",
+      "source_sha256": "31f2d6e6bb9d8df44694ddf093e4924ab404644f0764dc3183ef5df07ed1a6da",
+      "export_sha256": "31f2d6e6bb9d8df44694ddf093e4924ab404644f0764dc3183ef5df07ed1a6da"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/config.py",
+      "source_sha256": "0a76ee350ae9fa8cf3fbe578f57f55c0ba73947db6a516eb9aff4f3492a71466",
+      "export_sha256": "0a76ee350ae9fa8cf3fbe578f57f55c0ba73947db6a516eb9aff4f3492a71466"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/ft300.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/ftsensor/robotiq/ft300.py",
+      "source_sha256": "e741238d8c4b11ca70bd9e9d7058b86c21c77396f0360fda2501b06171ca45f1",
+      "export_sha256": "e741238d8c4b11ca70bd9e9d7058b86c21c77396f0360fda2501b06171ca45f1"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/gripper/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/gripper/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/gripper/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/gripper/base.py",
+      "source_sha256": "f2fd665ed442db9427894a6bd35a2f1287dd64ec2be52822e24b49a5c36019ee",
+      "export_sha256": "f2fd665ed442db9427894a6bd35a2f1287dd64ec2be52822e24b49a5c36019ee"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/config.py",
+      "source_sha256": "297cc1fa2d24efce8f12ec883689b61874233c84a3e6d6d5085e1cb2f91ae705",
+      "export_sha256": "297cc1fa2d24efce8f12ec883689b61874233c84a3e6d6d5085e1cb2f91ae705"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/panda.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/gripper/franka/panda.py",
+      "source_sha256": "c7756f569f57b46d8b35fb7a809d38fb37edead034a72719a9a740aeb76c748a",
+      "export_sha256": "c7756f569f57b46d8b35fb7a809d38fb37edead034a72719a9a740aeb76c748a"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/base.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/base.py",
+      "source_sha256": "d79ff23b1e5ca67a2e314cd90dae93234020b16677855a1fd445152ea3e94b20",
+      "export_sha256": "d79ff23b1e5ca67a2e314cd90dae93234020b16677855a1fd445152ea3e94b20"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/config.py",
+      "source_sha256": "3333014d74b5ef2b1abfed7eefedd565101f88f9caa2520db9c60589ee0d64fa",
+      "export_sha256": "3333014d74b5ef2b1abfed7eefedd565101f88f9caa2520db9c60589ee0d64fa"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/rizon.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/flexiv/rizon.py",
+      "source_sha256": "d74bf4d0dd4e849038f7e973c1646fe62a1ecaa8a68c9e0a5c7c3e9b5286b8e1",
+      "export_sha256": "d74bf4d0dd4e849038f7e973c1646fe62a1ecaa8a68c9e0a5c7c3e9b5286b8e1"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/config.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/config.py",
+      "source_sha256": "0849b051fc8c05448429e13a3ff837a8e458968300eada6cdefcb746cf4dc4ea",
+      "export_sha256": "0849b051fc8c05448429e13a3ff837a8e458968300eada6cdefcb746cf4dc4ea"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/panda.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/devices/robot/franka/panda.py",
+      "source_sha256": "b35ae0bb6ce9790410f975d9c8074680e2ccda6695fe961c36a05e3af54cbe70",
+      "export_sha256": "b35ae0bb6ce9790410f975d9c8074680e2ccda6695fe961c36a05e3af54cbe70"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/__init__.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/buffer.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/buffer.py",
+      "source_sha256": "5520166b0c6e096060305e5237445d163a1c8c54b7e634752b42228936964bcc",
+      "export_sha256": "5520166b0c6e096060305e5237445d163a1c8c54b7e634752b42228936964bcc"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/color.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/color.py",
+      "source_sha256": "b584f3b4b98a0bc3cd9896989374ab8ab3e4c469c6e0e39ae69226eda5ed0b49",
+      "export_sha256": "b584f3b4b98a0bc3cd9896989374ab8ab3e4c469c6e0e39ae69226eda5ed0b49"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/normalization.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/normalization.py",
+      "source_sha256": "5425ded52126d6f21984284b4b70aa5db1fda23220f292254b0ce3a9fecdc8e3",
+      "export_sha256": "5425ded52126d6f21984284b4b70aa5db1fda23220f292254b0ce3a9fecdc8e3"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/pc.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/pc.py",
+      "source_sha256": "e06fb29190ce4008cdde7175bfe279ddf58bced362315640aa4d24ead89f7310",
+      "export_sha256": "e06fb29190ce4008cdde7175bfe279ddf58bced362315640aa4d24ead89f7310"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/reset.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/reset.py",
+      "source_sha256": "b65bebbadae18da403475af47b536909efbad3b6e9517a4ea0809d1e51442981",
+      "export_sha256": "b65bebbadae18da403475af47b536909efbad3b6e9517a4ea0809d1e51442981"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/sequence.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/sequence.py",
+      "source_sha256": "7817b41f2cbc275e0524b3d4c7b69515e59ef51fb26b7829b77eca1447c37063",
+      "export_sha256": "7817b41f2cbc275e0524b3d4c7b69515e59ef51fb26b7829b77eca1447c37063"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/transformation.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/transformation.py",
+      "source_sha256": "7a5c85a1cc4bfb31285d2746b348088b2a41985da3e9778d9cc7680846f898eb",
+      "export_sha256": "7a5c85a1cc4bfb31285d2746b348088b2a41985da3e9778d9cc7680846f898eb"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/r3kit/utils/vis.py",
+      "path": "fastwam/src/realman_deployment/r3kit/r3kit/utils/vis.py",
+      "source_sha256": "e91c7ae24711aa33cb783fe288ecfeb7e7d0d95e5b94605ec5fe25dd640110bc",
+      "export_sha256": "e91c7ae24711aa33cb783fe288ecfeb7e7d0d95e5b94605ec5fe25dd640110bc"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/r3kit/setup.py",
+      "path": "fastwam/src/realman_deployment/r3kit/setup.py",
+      "source_sha256": "4f8f2729fcd350cafc719398ff0f3d39d98bb0a5b52d06f91e61e67344418975",
+      "export_sha256": "4f8f2729fcd350cafc719398ff0f3d39d98bb0a5b52d06f91e61e67344418975"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/server.py",
+      "path": "fastwam/src/realman_deployment/server.py",
+      "source_sha256": "16d22d50f6e9d5105f74c8efd3eb76b9a2710c268ba9f3aec7d64cfc2f670594",
+      "export_sha256": "16d22d50f6e9d5105f74c8efd3eb76b9a2710c268ba9f3aec7d64cfc2f670594"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/simulate.py",
+      "path": "fastwam/src/realman_deployment/simulate.py",
+      "source_sha256": "352455677599311a1b25b7a890c9e3ce0a52c108f4cd39ed4ab2d42f1209360c",
+      "export_sha256": "352455677599311a1b25b7a890c9e3ce0a52c108f4cd39ed4ab2d42f1209360c"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/tests/__init__.py",
+      "path": "fastwam/src/realman_deployment/tests/__init__.py",
+      "source_sha256": "173bbb9b7621d546a9bb56b6ab4de0be5f2bc31dae24fe255b84e8a5d2843857",
+      "export_sha256": "173bbb9b7621d546a9bb56b6ab4de0be5f2bc31dae24fe255b84e8a5d2843857"
+    },
+    {
+      "source": "/home/robot2/deltawam/src/realman_deployment/tests/test_deployment.py",
+      "path": "fastwam/src/realman_deployment/tests/test_deployment.py",
+      "source_sha256": "196ce13f249fa0af7867cbceaf761d77e8a7562c3adb410a2d8d92c5ce37acc8",
+      "export_sha256": "bac7885e3ee6eb899d30ec6860680c7b20298b5ed6993dce90f7f0ba6d6bad71"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/data/libero_2cam.yaml",
+      "path": "fastwam/configs/data/libero_2cam.yaml",
+      "source_sha256": "4d40ad0cd31337e0ccd04232c548a1a292bf3a0672644db781af4155bedb9b7d",
+      "export_sha256": "4d40ad0cd31337e0ccd04232c548a1a292bf3a0672644db781af4155bedb9b7d"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/data/realman_demo_finetune.yaml",
+      "path": "fastwam/configs/data/realman_demo_finetune.yaml",
+      "source_sha256": "c7cb4f8ecf2e966a0cf36f31b9143ed26bcee24edb1d0503dc9bc3b8a5b308b9",
+      "export_sha256": "c7cb4f8ecf2e966a0cf36f31b9143ed26bcee24edb1d0503dc9bc3b8a5b308b9"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/data/realman_rmc_aidal.yaml",
+      "path": "fastwam/configs/data/realman_rmc_aidal.yaml",
+      "source_sha256": "3dfa7a26cd88790fa6d7dfe821f61ba4050b98a88d876c55e1308993f6305ac4",
+      "export_sha256": "3dfa7a26cd88790fa6d7dfe821f61ba4050b98a88d876c55e1308993f6305ac4"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/data/robotwin.yaml",
+      "path": "fastwam/configs/data/robotwin.yaml",
+      "source_sha256": "1df6f131323b0e15b7ca533d2929be98f3074c8129feff1b13b65ea5d2c47d68",
+      "export_sha256": "1df6f131323b0e15b7ca533d2929be98f3074c8129feff1b13b65ea5d2c47d68"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/data/robotwin2_official_task_mapping.json",
+      "path": "fastwam/configs/data/robotwin2_official_task_mapping.json",
+      "source_sha256": "564d5d2b2da92d9cc6cff48630fbddcf896dbbdcde08f2012536780a112dba2e",
+      "export_sha256": "564d5d2b2da92d9cc6cff48630fbddcf896dbbdcde08f2012536780a112dba2e"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/deltawam.yaml",
+      "path": "fastwam/configs/model/deltawam.yaml",
+      "source_sha256": "bdd92bd7b1a1a421627d3968f2ece7280f7394f28adcbbc417db954b9018e4e9",
+      "export_sha256": "bdd92bd7b1a1a421627d3968f2ece7280f7394f28adcbbc417db954b9018e4e9"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/deltawam_joint.yaml",
+      "path": "fastwam/configs/model/deltawam_joint.yaml",
+      "source_sha256": "ccad3959a1dff2c29f244e31557bea81be64c79c59e34c7299e6ca45c42ccfa7",
+      "export_sha256": "ccad3959a1dff2c29f244e31557bea81be64c79c59e34c7299e6ca45c42ccfa7"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/deltawam_joint_light.yaml",
+      "path": "fastwam/configs/model/deltawam_joint_light.yaml",
+      "source_sha256": "38ef9d9e5254adfb88d77a54730d7b607fe6f770795b94adb085bc918e5b0b1d",
+      "export_sha256": "38ef9d9e5254adfb88d77a54730d7b607fe6f770795b94adb085bc918e5b0b1d"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/deltawam_lam.yaml",
+      "path": "fastwam/configs/model/deltawam_lam.yaml",
+      "source_sha256": "ee700172e6e9e85c737ab4e22a6682a96765e104f6e1eb2588b259155dd77998",
+      "export_sha256": "ee700172e6e9e85c737ab4e22a6682a96765e104f6e1eb2588b259155dd77998"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/deltawam_wan_delta_light.yaml",
+      "path": "fastwam/configs/model/deltawam_wan_delta_light.yaml",
+      "source_sha256": "43c84357882f2fc7a6f8bd3db48cb366c1668af8b0e347eca5b52b770691f9f8",
+      "export_sha256": "43c84357882f2fc7a6f8bd3db48cb366c1668af8b0e347eca5b52b770691f9f8"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/fastwam.yaml",
+      "path": "fastwam/configs/model/fastwam.yaml",
+      "source_sha256": "a23e800b23022ec7d6d9e899d0c419dcdb619bd30683ac5c2895057116c85b9e",
+      "export_sha256": "a23e800b23022ec7d6d9e899d0c419dcdb619bd30683ac5c2895057116c85b9e"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/fastwam_idm.yaml",
+      "path": "fastwam/configs/model/fastwam_idm.yaml",
+      "source_sha256": "e84d8299bf386564aec988afe8218fcebb1435d5fef8074b13fb5dd46afd142c",
+      "export_sha256": "e84d8299bf386564aec988afe8218fcebb1435d5fef8074b13fb5dd46afd142c"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/fastwam_joint.yaml",
+      "path": "fastwam/configs/model/fastwam_joint.yaml",
+      "source_sha256": "86686a36f3e29f7ec6218c37a84272e3f89b185fb3c17bbd8069a122f9d4e1f9",
+      "export_sha256": "86686a36f3e29f7ec6218c37a84272e3f89b185fb3c17bbd8069a122f9d4e1f9"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/model/pregenerate_deltawam_dit.yaml",
+      "path": "fastwam/configs/model/pregenerate_deltawam_dit.yaml",
+      "source_sha256": "29bdb9fc15fb7922cfab8cd1b6c17cf319cd22f6dfad34721937da0885f09dba",
+      "export_sha256": "29bdb9fc15fb7922cfab8cd1b6c17cf319cd22f6dfad34721937da0885f09dba"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/sim_libero.yaml",
+      "path": "fastwam/configs/sim_libero.yaml",
+      "source_sha256": "abfa9d4ee15e8e05517658774cbe83c60f58176075199e7f106fc4e8fd4a3e54",
+      "export_sha256": "abfa9d4ee15e8e05517658774cbe83c60f58176075199e7f106fc4e8fd4a3e54"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/sim_robotwin.yaml",
+      "path": "fastwam/configs/sim_robotwin.yaml",
+      "source_sha256": "328fa3e3c19a6b726ff45db1b1e17bed46e09342940d228a16806eb2562764d9",
+      "export_sha256": "328fa3e3c19a6b726ff45db1b1e17bed46e09342940d228a16806eb2562764d9"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/libero_idm_2cam224_1e-4.yaml",
+      "path": "fastwam/configs/task/libero_idm_2cam224_1e-4.yaml",
+      "source_sha256": "5df6cf62843806b0d9d2fb48b873945865bbfa74d135c58032651d54d6992c4e",
+      "export_sha256": "5df6cf62843806b0d9d2fb48b873945865bbfa74d135c58032651d54d6992c4e"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/libero_joint_2cam224_1e-4.yaml",
+      "path": "fastwam/configs/task/libero_joint_2cam224_1e-4.yaml",
+      "source_sha256": "1c46f34058c9c5363bab6814a0b86eb13be3a0077e944db7d39cf151da07636e",
+      "export_sha256": "1c46f34058c9c5363bab6814a0b86eb13be3a0077e944db7d39cf151da07636e"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/libero_uncond_2cam224_1e-4.yaml",
+      "path": "fastwam/configs/task/libero_uncond_2cam224_1e-4.yaml",
+      "source_sha256": "27bdc30545aa06bca81137690a241d469d5a67a433881976bd79da3d4171d1a0",
+      "export_sha256": "27bdc30545aa06bca81137690a241d469d5a67a433881976bd79da3d4171d1a0"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/realman_demo_organize_finetune_3cam_384_1e-5.yaml",
+      "path": "fastwam/configs/task/realman_demo_organize_finetune_3cam_384_1e-5.yaml",
+      "source_sha256": "644101c4da437fe74857443ce1e9c73131ac96c5827202a32116f8b1f523dd19",
+      "export_sha256": "644101c4da437fe74857443ce1e9c73131ac96c5827202a32116f8b1f523dd19"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/realman_demo_sugar_finetune_3cam_384_1e-5.yaml",
+      "path": "fastwam/configs/task/realman_demo_sugar_finetune_3cam_384_1e-5.yaml",
+      "source_sha256": "a81593a3750e1e54c9566c81ca9193a23e3790b3aa21a85dfeed4c0b8588d5fe",
+      "export_sha256": "a81593a3750e1e54c9566c81ca9193a23e3790b3aa21a85dfeed4c0b8588d5fe"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/realman_rmc_aidal_uncond_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/realman_rmc_aidal_uncond_3cam_384_1e-4.yaml",
+      "source_sha256": "def18a8484c6c89c423e450cefff80d2fe42063a127b7bec2aae1b57a7631443",
+      "export_sha256": "def18a8484c6c89c423e450cefff80d2fe42063a127b7bec2aae1b57a7631443"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/robotwin_deltawam_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/robotwin_deltawam_3cam_384_1e-4.yaml",
+      "source_sha256": "081c89fffde96a37ab07ed0a5c9f924a9d4919cb997c4c32605fc46c50f8919f",
+      "export_sha256": "081c89fffde96a37ab07ed0a5c9f924a9d4919cb997c4c32605fc46c50f8919f"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/robotwin_idm_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/robotwin_idm_3cam_384_1e-4.yaml",
+      "source_sha256": "2e67c9f301105752962af825e57e5b46ef5e6ba4290e397e5efc7abb88652619",
+      "export_sha256": "2e67c9f301105752962af825e57e5b46ef5e6ba4290e397e5efc7abb88652619"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/robotwin_joint_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/robotwin_joint_3cam_384_1e-4.yaml",
+      "source_sha256": "daf4cb5246728ba60ae6903fbfd9d5e029d7172f30916b8143f81783450fa874",
+      "export_sha256": "daf4cb5246728ba60ae6903fbfd9d5e029d7172f30916b8143f81783450fa874"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/robotwin_uncond_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/robotwin_uncond_3cam_384_1e-4.yaml",
+      "source_sha256": "2f78a207415b452b05e0238f3e00eb9942d7960413076b5b3cdcf1ce09caef9f",
+      "export_sha256": "2f78a207415b452b05e0238f3e00eb9942d7960413076b5b3cdcf1ce09caef9f"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_deltawam_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_deltawam_3cam_384_1e-4.yaml",
+      "source_sha256": "6601b0270a34e8d0c71d188eb0d04253c7efb4eea1afb529c4c41b80349b66fa",
+      "export_sha256": "6601b0270a34e8d0c71d188eb0d04253c7efb4eea1afb529c4c41b80349b66fa"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_deltawam_joint_lam_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_deltawam_joint_lam_3cam_384_1e-4.yaml",
+      "source_sha256": "d78ade1c1db259cdcc7a2d65beb66671d86fd5b7910503570a249972f679b4b5",
+      "export_sha256": "d78ade1c1db259cdcc7a2d65beb66671d86fd5b7910503570a249972f679b4b5"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_deltawam_joint_light_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_deltawam_joint_light_3cam_384_1e-4.yaml",
+      "source_sha256": "a76a48ba1f2892a17db3741f7831648e2774931cee2f6510ce27d4149bfad85d",
+      "export_sha256": "a76a48ba1f2892a17db3741f7831648e2774931cee2f6510ce27d4149bfad85d"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_deltawam_lam_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_deltawam_lam_3cam_384_1e-4.yaml",
+      "source_sha256": "214566d7041a853eba41395c35da0da2ddf17471e8c78e8b3605f5cb83172790",
+      "export_sha256": "214566d7041a853eba41395c35da0da2ddf17471e8c78e8b3605f5cb83172790"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_deltawam_wan_delta_light_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_deltawam_wan_delta_light_3cam_384_1e-4.yaml",
+      "source_sha256": "312dc4a59c1f9f89addd605d524807efc0a872e1a20d5b1ea759d01351c4fedf",
+      "export_sha256": "312dc4a59c1f9f89addd605d524807efc0a872e1a20d5b1ea759d01351c4fedf"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/task/sub_robotwin_uncond_3cam_384_1e-4.yaml",
+      "path": "fastwam/configs/task/sub_robotwin_uncond_3cam_384_1e-4.yaml",
+      "source_sha256": "905c7d507acae98a044d8d400932706ba18c96c85a6c8da7ac5d2c7c821d111e",
+      "export_sha256": "905c7d507acae98a044d8d400932706ba18c96c85a6c8da7ac5d2c7c821d111e"
+    },
+    {
+      "source": "/home/robot2/deltawam/configs/train.yaml",
+      "path": "fastwam/configs/train.yaml",
+      "source_sha256": "42a60765bfdd842af01aacdde6066ce63be00698377fe7729110b795be684016",
+      "export_sha256": "42a60765bfdd842af01aacdde6066ce63be00698377fe7729110b795be684016"
+    },
+    {
+      "source": "/home/robot2/deltawam/LICENSE",
+      "path": "fastwam/LICENSE",
+      "source_sha256": "8379dddfbbb1154ad9cc57f008f1f8d4a8d26c3de99bd6b36aa4d8067888aa92",
+      "export_sha256": "8379dddfbbb1154ad9cc57f008f1f8d4a8d26c3de99bd6b36aa4d8067888aa92"
+    },
+    {
+      "source": "/home/robot2/deltawam/pyproject.toml",
+      "path": "fastwam/pyproject.toml",
+      "source_sha256": "60ba113d78e46af13f021be6a44e65b12edf3c7f6147cdc5484a22c68e1ebb01",
+      "export_sha256": "60ba113d78e46af13f021be6a44e65b12edf3c7f6147cdc5484a22c68e1ebb01"
+    },
+    {
+      "source": "/home/robot2/deltawam/scripts/tasks/run_realman_fastwam_client.sh",
+      "path": "fastwam/scripts/tasks/run_realman_fastwam_client.sh",
+      "source_sha256": "3299ccb5959c34b138a8f35072207f8ae5e19d966ef514fd7f07e13969e6ad42",
+      "export_sha256": "3299ccb5959c34b138a8f35072207f8ae5e19d966ef514fd7f07e13969e6ad42"
+    },
+    {
+      "source": "/home/robot2/deltawam/scripts/tasks/serve_realman_fastwam.sh",
+      "path": "fastwam/scripts/tasks/serve_realman_fastwam.sh",
+      "source_sha256": "9ba0294f9c3c4148d598dc4fa3dca55314675bdf52ebf08968f33d62d51534e0",
+      "export_sha256": "9ba0294f9c3c4148d598dc4fa3dca55314675bdf52ebf08968f33d62d51534e0"
+    },
+    {
+      "source": "/home/robot2/deltawam/scripts/tasks/test_realman_fastwam_deployment.sh",
+      "path": "fastwam/scripts/tasks/test_realman_fastwam_deployment.sh",
+      "source_sha256": "c9ec1411966c0a8f0a51b6b0d0f5b972ef6efa4b02ce4c16f571cb1558838d13",
+      "export_sha256": "c9ec1411966c0a8f0a51b6b0d0f5b972ef6efa4b02ce4c16f571cb1558838d13"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/.gitattributes",
+      "path": "pi05/.gitattributes",
+      "source_sha256": "fa54769f445ce414b958161eb6c038dc56fd369767bc475adeff28bd9b2ba490",
+      "export_sha256": "fa54769f445ce414b958161eb6c038dc56fd369767bc475adeff28bd9b2ba490"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/.gitignore",
+      "path": "pi05/.gitignore",
+      "source_sha256": "cadddf21ae7f9dc57d905e19611971eeff02d72e4a477b8e531082e916ad5c65",
+      "export_sha256": "cadddf21ae7f9dc57d905e19611971eeff02d72e4a477b8e531082e916ad5c65"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/README.md",
+      "path": "pi05/README.md",
+      "source_sha256": "6f358104d3adf73f96b2c769ab208d750ca1181d5742116f9f4db1f0b020ccbf",
+      "export_sha256": "6f358104d3adf73f96b2c769ab208d750ca1181d5742116f9f4db1f0b020ccbf"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/configs/pi05_realman_presets.toml",
+      "path": "pi05/configs/pi05_realman_presets.toml",
+      "source_sha256": "eba7b18351e310621ee33e3773007621dbe80cc5f3f65deda3300e03e604cede",
+      "export_sha256": "eba7b18351e310621ee33e3773007621dbe80cc5f3f65deda3300e03e604cede"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/configs/realman_pi05_integration.toml",
+      "path": "pi05/configs/realman_pi05_integration.toml",
+      "source_sha256": "4d50516ff845bb39b963dc6051aafcadfad7a061d63ed9e96d0ec2ba53f364a6",
+      "export_sha256": "4d50516ff845bb39b963dc6051aafcadfad7a061d63ed9e96d0ec2ba53f364a6"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/configs/rr_dep_003.toml",
+      "path": "pi05/configs/rr_dep_003.toml",
+      "source_sha256": "4cf360f6db732e9274666a1b519cc8b284b95cfaa82a3836c94f7037b9ac96e1",
+      "export_sha256": "4cf360f6db732e9274666a1b519cc8b284b95cfaa82a3836c94f7037b9ac96e1"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/configs/rr_dep_004.toml",
+      "path": "pi05/configs/rr_dep_004.toml",
+      "source_sha256": "d16533b4a82333ab462430a8a0b2b1013d196d6390e6930d4e20235a16b13028",
+      "export_sha256": "d16533b4a82333ab462430a8a0b2b1013d196d6390e6930d4e20235a16b13028"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/docs/configuration.md",
+      "path": "pi05/docs/configuration.md",
+      "source_sha256": "217ee769bfd8e636cb07a72e47c7d7623171e347daf61ca1aa5eb8d6863216ac",
+      "export_sha256": "217ee769bfd8e636cb07a72e47c7d7623171e347daf61ca1aa5eb8d6863216ac"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/docs/environment.md",
+      "path": "pi05/docs/environment.md",
+      "source_sha256": "dfda88b63b67db0a49d8a23f63ce39053c2ad0a171ba5181bfbbab7d4578ec04",
+      "export_sha256": "dfda88b63b67db0a49d8a23f63ce39053c2ad0a171ba5181bfbbab7d4578ec04"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/docs/interface-contract.md",
+      "path": "pi05/docs/interface-contract.md",
+      "source_sha256": "79bdbda9d220d3c2df5b8a8fa7d5838d0ef51d6cf4eaaea2fb7fbeae2bc13b0c",
+      "export_sha256": "79bdbda9d220d3c2df5b8a8fa7d5838d0ef51d6cf4eaaea2fb7fbeae2bc13b0c"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/docs/operations.md",
+      "path": "pi05/docs/operations.md",
+      "source_sha256": "a9923eba6e99f8d7623398572f17b9beaf060c3a1669837811e5bd0110dc519d",
+      "export_sha256": "a9923eba6e99f8d7623398572f17b9beaf060c3a1669837811e5bd0110dc519d"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/environment/known-good-client.toml",
+      "path": "pi05/environment/known-good-client.toml",
+      "source_sha256": "2129879e145f271e24156001a2e8c8be524bc2a46ab1b0cc996bf0edd5453ff1",
+      "export_sha256": "2129879e145f271e24156001a2e8c8be524bc2a46ab1b0cc996bf0edd5453ff1"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/environment/patches/deltawam-runtime.patch",
+      "path": "pi05/environment/patches/deltawam-runtime.patch",
+      "source_sha256": "21df530b216711bf547b5550531d25b9a97380b718383b65e3733156472f15da",
+      "export_sha256": "21df530b216711bf547b5550531d25b9a97380b718383b65e3733156472f15da"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/environment/patches/r3kit-realsense.patch",
+      "path": "pi05/environment/patches/r3kit-realsense.patch",
+      "source_sha256": "e1c2cc561f9451da04ed781308f5aa1ef4b0c6e222a3d6317dbfb0c6ff05cca9",
+      "export_sha256": "e1c2cc561f9451da04ed781308f5aa1ef4b0c6e222a3d6317dbfb0c6ff05cca9"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/pyproject.toml",
+      "path": "pi05/pyproject.toml",
+      "source_sha256": "b3329f23df20225d06f378884d179bbc03f77c3f501fec2c55ba5160b0473a77",
+      "export_sha256": "b3329f23df20225d06f378884d179bbc03f77c3f501fec2c55ba5160b0473a77"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/check_pi05_environment.py",
+      "path": "pi05/scripts/check_pi05_environment.py",
+      "source_sha256": "77bfbf4f213b92c881655ebb02ddaea72a0a287b5a0399bd3f582e06d1b32d85",
+      "export_sha256": "77bfbf4f213b92c881655ebb02ddaea72a0a287b5a0399bd3f582e06d1b32d85"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/run_pi05_realman.py",
+      "path": "pi05/scripts/run_pi05_realman.py",
+      "source_sha256": "9fbad26f1d1e5d8ef866b6456b60b9ca4660dfd92aa38a2db743bec040931561",
+      "export_sha256": "9fbad26f1d1e5d8ef866b6456b60b9ca4660dfd92aa38a2db743bec040931561"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/run_rr_dep_002_integration.py",
+      "path": "pi05/scripts/run_rr_dep_002_integration.py",
+      "source_sha256": "b49583c1bc3d2c8708bf55db07e98e9f8466c33a11653649d4ba52a10164bad5",
+      "export_sha256": "b49583c1bc3d2c8708bf55db07e98e9f8466c33a11653649d4ba52a10164bad5"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/run_rr_dep_003.py",
+      "path": "pi05/scripts/run_rr_dep_003.py",
+      "source_sha256": "eb282e473bd67eac7e544c3513c48e02410aaead5f10b1eab085f9eb48822ef5",
+      "export_sha256": "eb282e473bd67eac7e544c3513c48e02410aaead5f10b1eab085f9eb48822ef5"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/run_rr_dep_004.py",
+      "path": "pi05/scripts/run_rr_dep_004.py",
+      "source_sha256": "aef3ad6cae0486809c69fa2a670870278c53dc278c5c23bbd7f181f509e3f8f6",
+      "export_sha256": "aef3ad6cae0486809c69fa2a670870278c53dc278c5c23bbd7f181f509e3f8f6"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/scripts/run_rr_dep_006.py",
+      "path": "pi05/scripts/run_rr_dep_006.py",
+      "source_sha256": "1853b7e606e0fd8447469fad652369b1c70cc9dc7e905d85980893a028b5fc84",
+      "export_sha256": "1853b7e606e0fd8447469fad652369b1c70cc9dc7e905d85980893a028b5fc84"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/__init__.py",
+      "path": "pi05/src/robot_client_runtime/__init__.py",
+      "source_sha256": "a8ec8212072ccb85f8c469d071897825699b6e7b9a36e163d4ac0bf31f695c7a",
+      "export_sha256": "a8ec8212072ccb85f8c469d071897825699b6e7b9a36e163d4ac0bf31f695c7a"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/action_validator.py",
+      "path": "pi05/src/robot_client_runtime/action_validator.py",
+      "source_sha256": "0cdd43f46ca6b625b4a87c164f4559c6f03881f7a5c3c880e26c2bde0f1d7dd3",
+      "export_sha256": "0cdd43f46ca6b625b4a87c164f4559c6f03881f7a5c3c880e26c2bde0f1d7dd3"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/chunk_scheduler.py",
+      "path": "pi05/src/robot_client_runtime/chunk_scheduler.py",
+      "source_sha256": "e650df95afaaa2cd56949dcf61b7934e5c4f435263fb0b2b5fd8bfcddec1ca97",
+      "export_sha256": "e650df95afaaa2cd56949dcf61b7934e5c4f435263fb0b2b5fd8bfcddec1ca97"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/cli.py",
+      "path": "pi05/src/robot_client_runtime/cli.py",
+      "source_sha256": "c99e6a5ec88fe94c983663a7b64d188347dee4ee893bd6b7f8bd8c1d73f16872",
+      "export_sha256": "c99e6a5ec88fe94c983663a7b64d188347dee4ee893bd6b7f8bd8c1d73f16872"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/environment_check.py",
+      "path": "pi05/src/robot_client_runtime/environment_check.py",
+      "source_sha256": "b9a14485377706131123bf8a9b1944e97acaf350541d58c18192b8d44fe089a1",
+      "export_sha256": "b9a14485377706131123bf8a9b1944e97acaf350541d58c18192b8d44fe089a1"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/observation_adapter.py",
+      "path": "pi05/src/robot_client_runtime/observation_adapter.py",
+      "source_sha256": "5af8ae1bf8088aed1f92d6c6ceac9dc1d05b3388e01cb384ad3d753a592418e2",
+      "export_sha256": "5af8ae1bf8088aed1f92d6c6ceac9dc1d05b3388e01cb384ad3d753a592418e2"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/pi05_action_adapter.py",
+      "path": "pi05/src/robot_client_runtime/pi05_action_adapter.py",
+      "source_sha256": "2997dffe441a48e907f94c2226916e0309fc448e30acbc1eb6f2d7403a715aba",
+      "export_sha256": "2997dffe441a48e907f94c2226916e0309fc448e30acbc1eb6f2d7403a715aba"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/pi05_policy_client.py",
+      "path": "pi05/src/robot_client_runtime/pi05_policy_client.py",
+      "source_sha256": "9e29a95f82866dccc6b30c05f76560b2e8f78ebff6ce10cb53d07472dfeaa091",
+      "export_sha256": "9e29a95f82866dccc6b30c05f76560b2e8f78ebff6ce10cb53d07472dfeaa091"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/production_pi05.py",
+      "path": "pi05/src/robot_client_runtime/production_pi05.py",
+      "source_sha256": "e2eb12e5fa634d0d1ea8ebf95f341a516d1f3d9dc120291ad72e6c52f5775a55",
+      "export_sha256": "e2eb12e5fa634d0d1ea8ebf95f341a516d1f3d9dc120291ad72e6c52f5775a55"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/realman_adapter.py",
+      "path": "pi05/src/robot_client_runtime/realman_adapter.py",
+      "source_sha256": "8902cee335b8714dfa4d838300ef4316c3a8b4ef88cd1cd5d89c6d09f4245f39",
+      "export_sha256": "8902cee335b8714dfa4d838300ef4316c3a8b4ef88cd1cd5d89c6d09f4245f39"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/realman_pi05.py",
+      "path": "pi05/src/robot_client_runtime/realman_pi05.py",
+      "source_sha256": "89aec5f26d98668e5d74c2431072cb984d5fb455a4579331296110daf2a80040",
+      "export_sha256": "89aec5f26d98668e5d74c2431072cb984d5fb455a4579331296110daf2a80040"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_002_integration.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_002_integration.py",
+      "source_sha256": "45a8104bff1dbce0947cd40cddcaf5ba01953351ba2a7ef843eeeb9189a2b009",
+      "export_sha256": "45a8104bff1dbce0947cd40cddcaf5ba01953351ba2a7ef843eeeb9189a2b009"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_003.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_003.py",
+      "source_sha256": "adf473549b178821c92d53044f155d09b115685dc4f4259803f8ac01fc3a7bc2",
+      "export_sha256": "adf473549b178821c92d53044f155d09b115685dc4f4259803f8ac01fc3a7bc2"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_003_motion.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_003_motion.py",
+      "source_sha256": "f181c1d6a59ac295fa1bdee954c40d44dd358a9a4e72db700c5ef6aeeec1eeb9",
+      "export_sha256": "f181c1d6a59ac295fa1bdee954c40d44dd358a9a4e72db700c5ef6aeeec1eeb9"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_004.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_004.py",
+      "source_sha256": "2a09c310bbbabdde147f9192a3fcda7bac67ce8da24f2200636697b5a3a66e71",
+      "export_sha256": "2a09c310bbbabdde147f9192a3fcda7bac67ce8da24f2200636697b5a3a66e71"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_005.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_005.py",
+      "source_sha256": "614def930d8507ca886ab01d473b454e68abc239bbbecae49d31e733cc132b4b",
+      "export_sha256": "614def930d8507ca886ab01d473b454e68abc239bbbecae49d31e733cc132b4b"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_006.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_006.py",
+      "source_sha256": "3ce1cd11b098eafb196cdf25eac9af18c49fff74e3ea705d8e8e46215af2dec1",
+      "export_sha256": "3ce1cd11b098eafb196cdf25eac9af18c49fff74e3ea705d8e8e46215af2dec1"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/rr_dep_007.py",
+      "path": "pi05/src/robot_client_runtime/rr_dep_007.py",
+      "source_sha256": "4faf78546234f26ebf9d8de08dfc75641060620efbbf0395121bbebd1ffc99b5",
+      "export_sha256": "4faf78546234f26ebf9d8de08dfc75641060620efbbf0395121bbebd1ffc99b5"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/src/robot_client_runtime/schemas.py",
+      "path": "pi05/src/robot_client_runtime/schemas.py",
+      "source_sha256": "0f04200c75661a1a5591e7dc556345e8c4bbf107ae9bfe1df85741e7e083aab8",
+      "export_sha256": "0f04200c75661a1a5591e7dc556345e8c4bbf107ae9bfe1df85741e7e083aab8"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_environment_check.py",
+      "path": "pi05/tests/test_environment_check.py",
+      "source_sha256": "7507434e69386b20484aec567d029b6a4d31dd46c4170c5b56d63ef8abfcbcc8",
+      "export_sha256": "7507434e69386b20484aec567d029b6a4d31dd46c4170c5b56d63ef8abfcbcc8"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_production_pi05.py",
+      "path": "pi05/tests/test_production_pi05.py",
+      "source_sha256": "55e757ddeb657954df3a02e749fc4e5fe8c7888d4d287721e5eb0fe2d73b1985",
+      "export_sha256": "55e757ddeb657954df3a02e749fc4e5fe8c7888d4d287721e5eb0fe2d73b1985"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_realman_pi05.py",
+      "path": "pi05/tests/test_realman_pi05.py",
+      "source_sha256": "a8f76799d98c21bc4ee811fddfafb215dfe8ff66924da03e116958c382038904",
+      "export_sha256": "a8f76799d98c21bc4ee811fddfafb215dfe8ff66924da03e116958c382038904"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_rr_dep_003.py",
+      "path": "pi05/tests/test_rr_dep_003.py",
+      "source_sha256": "1fb030967a6574ed7bb4214f7524daa7fca1939fe8f4213c6bfb1fb684a371be",
+      "export_sha256": "1fb030967a6574ed7bb4214f7524daa7fca1939fe8f4213c6bfb1fb684a371be"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_rr_dep_004.py",
+      "path": "pi05/tests/test_rr_dep_004.py",
+      "source_sha256": "69b8b89ddd20cafdc83f04596ace1745ba7165d6cbe6461a0b03c09ed8775edc",
+      "export_sha256": "69b8b89ddd20cafdc83f04596ace1745ba7165d6cbe6461a0b03c09ed8775edc"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_rr_dep_005.py",
+      "path": "pi05/tests/test_rr_dep_005.py",
+      "source_sha256": "051accbc262a64263bb939d61cb33a7fbf27bac8d7d51a107700c6543299efdd",
+      "export_sha256": "051accbc262a64263bb939d61cb33a7fbf27bac8d7d51a107700c6543299efdd"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_rr_dep_006.py",
+      "path": "pi05/tests/test_rr_dep_006.py",
+      "source_sha256": "9b268caf1ce55b33625634ffc77123d473038973621ea98bf328f3bd133c2a79",
+      "export_sha256": "9b268caf1ce55b33625634ffc77123d473038973621ea98bf328f3bd133c2a79"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_rr_dep_007.py",
+      "path": "pi05/tests/test_rr_dep_007.py",
+      "source_sha256": "0f860abb08d2ccca52227ef9c144ec68a197c3bfe1b0bfd98bc1d8f52d4d8509",
+      "export_sha256": "0f860abb08d2ccca52227ef9c144ec68a197c3bfe1b0bfd98bc1d8f52d4d8509"
+    },
+    {
+      "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/tests/test_runtime.py",
+      "path": "pi05/tests/test_runtime.py",
+      "source_sha256": "e4b9911c5f12abab6caa94d907c2508e214b736ae80b522ab84043aed1760984",
+      "export_sha256": "e4b9911c5f12abab6caa94d907c2508e214b736ae80b522ab84043aed1760984"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/scripts/evaluation/client_realman_on_machine.py",
+      "path": "legacy/scripts/evaluation/client_realman_on_machine.py",
+      "source_sha256": "caf8d1ed996b7a7bbe34863396c74418053bc7dcebcbfa0e21a55d1b80d1674e",
+      "export_sha256": "caf8d1ed996b7a7bbe34863396c74418053bc7dcebcbfa0e21a55d1b80d1674e"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/scripts/evaluation/client_pi05_real.py",
+      "path": "legacy/scripts/evaluation/client_pi05_real.py",
+      "source_sha256": "b1c5377febb36867575d81e26deb990fc2d7f2318165c1eb33f9cec6a6160775",
+      "export_sha256": "c43692fe55a3450768189f930d95ceac573e88691d8148ab041faf3b8e601e2c"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/scripts/evaluation/camera.py",
+      "path": "legacy/scripts/evaluation/camera.py",
+      "source_sha256": "220218b8fbb88ee8e122ce88b3ea22df33f530e4228a5636ee40e5344e26fb8c",
+      "export_sha256": "220218b8fbb88ee8e122ce88b3ea22df33f530e4228a5636ee40e5344e26fb8c"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/pyproject.toml",
+      "path": "legacy/openpi/openpi-client/pyproject.toml",
+      "source_sha256": "7db864abac0eda182d8a377f7c9174c8ba3919fc23538a88b8f51442daf5b36c",
+      "export_sha256": "7db864abac0eda182d8a377f7c9174c8ba3919fc23538a88b8f51442daf5b36c"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/__init__.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/__init__.py",
+      "source_sha256": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+      "export_sha256": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/action_chunk_broker.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/action_chunk_broker.py",
+      "source_sha256": "8b1a75b80944698534830e0e591a32047f1081bae23df870458510d1e22d3d7e",
+      "export_sha256": "8b1a75b80944698534830e0e591a32047f1081bae23df870458510d1e22d3d7e"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/base_policy.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/base_policy.py",
+      "source_sha256": "88e98e0f06293f3c4767db675061664c4bba12f87242ba1e64377d1b8de8069e",
+      "export_sha256": "88e98e0f06293f3c4767db675061664c4bba12f87242ba1e64377d1b8de8069e"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/image_tools.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/image_tools.py",
+      "source_sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977",
+      "export_sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/image_tools_test.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/image_tools_test.py",
+      "source_sha256": "4df4b0ba0b95ba5e47160039c3e837a64d50c802b419a588211dffbaa732589c",
+      "export_sha256": "4df4b0ba0b95ba5e47160039c3e837a64d50c802b419a588211dffbaa732589c"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/msgpack_numpy.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/msgpack_numpy.py",
+      "source_sha256": "c04568948fcee52b691e3be4b6cffb759f7e79ad67530fcd5d23095a0d13c057",
+      "export_sha256": "c04568948fcee52b691e3be4b6cffb759f7e79ad67530fcd5d23095a0d13c057"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/msgpack_numpy_test.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/msgpack_numpy_test.py",
+      "source_sha256": "2c6dd236720dae716d7bdf842b7d506a165e9563bf9d4376c95289269adcb973",
+      "export_sha256": "2c6dd236720dae716d7bdf842b7d506a165e9563bf9d4376c95289269adcb973"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/runtime/agent.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/runtime/agent.py",
+      "source_sha256": "b559885afd9645a91b9b6ee12a28513295474f987d11b16610fc0479dbe6de5b",
+      "export_sha256": "b559885afd9645a91b9b6ee12a28513295474f987d11b16610fc0479dbe6de5b"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/runtime/agents/policy_agent.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/runtime/agents/policy_agent.py",
+      "source_sha256": "a7841ddc48e4cb816e7ea4b66698d71bc30934e366e7ae37156d3fa41ba35793",
+      "export_sha256": "a7841ddc48e4cb816e7ea4b66698d71bc30934e366e7ae37156d3fa41ba35793"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/runtime/environment.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/runtime/environment.py",
+      "source_sha256": "1c12e5054b3401dec5f1f8b71eef0f625cb60e2b50784dcf19afa32c77107a7e",
+      "export_sha256": "1c12e5054b3401dec5f1f8b71eef0f625cb60e2b50784dcf19afa32c77107a7e"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/runtime/runtime.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/runtime/runtime.py",
+      "source_sha256": "3daa242a9ce61ffb210789ef3ba6b1e3cade9de757fcd36af7b174c530345ea8",
+      "export_sha256": "3daa242a9ce61ffb210789ef3ba6b1e3cade9de757fcd36af7b174c530345ea8"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/runtime/subscriber.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/runtime/subscriber.py",
+      "source_sha256": "d269a2af8ec4056beb310e5c3c97d4468af01549c7ef80dd905652d8ac64f85b",
+      "export_sha256": "d269a2af8ec4056beb310e5c3c97d4468af01549c7ef80dd905652d8ac64f85b"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/typing_compat.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/typing_compat.py",
+      "source_sha256": "47b790b5139e614f534b1a390d2d0cb125638c36420361aa85e15d5094716d69",
+      "export_sha256": "47b790b5139e614f534b1a390d2d0cb125638c36420361aa85e15d5094716d69"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/openpi/openpi-client/src/openpi_client/websocket_client_policy.py",
+      "path": "legacy/openpi/openpi-client/src/openpi_client/websocket_client_policy.py",
+      "source_sha256": "3085d69b5e2a673ec4baf2f5be92a14e7b0e76938f000e30a5f9cca5fc19d924",
+      "export_sha256": "3085d69b5e2a673ec4baf2f5be92a14e7b0e76938f000e30a5f9cca5fc19d924"
+    }
+  ],
+  "modified_source_files": [
+    "fastwam/src/realman_deployment/README.md",
+    "fastwam/src/realman_deployment/tests/test_deployment.py",
+    "legacy/scripts/evaluation/client_pi05_real.py"
+  ],
+  "notes": [
+    "Original source directories unchanged; large artifacts and credentials omitted.",
+    "Legacy LingBot launcher includes only the executable body; credential-bearing history comments were removed.",
+    "The FastWAM test suite now imports RealManHardware and skips its optional undistributed checkpoint test."
+  ]
+}

@@ -1,0 +1,106 @@
+_target_: fastwam.runtime.create_deltawam
+model_id: Wan-AI/Wan2.2-TI2V-5B
+tokenizer_model_id: Wan-AI/Wan2.1-T2V-1.3B
+tokenizer_max_len: 128
+load_text_encoder: true
+proprio_dim: ${data.train.processor.proprio_output_dim}
+redirect_common_files: true
+mot_checkpoint_mixed_attn: true
+delta_decode_default_mode: pred_prev
+delta_decode_eval_modes: [gt_prev, pred_prev]
+wan_lora_config:
+  train_full: false
+  enabled: true
+  rank: 8
+  alpha: 16.0
+  dropout: 0.0
+  bias: none
+  init_lora_weights: true
+  target_modules:
+    - self_attn.q
+    - self_attn.k
+    - self_attn.v
+    - self_attn.o
+wan_dit_config:
+  has_image_input: false
+  patch_size: [1, 2, 2]
+  in_dim: 48
+  hidden_dim: 3072
+  ffn_dim: 14336
+  freq_dim: 256
+  text_dim: 4096
+  out_dim: 48
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  eps: 1.0e-06
+  seperated_timestep: true
+  require_clip_embedding: false
+  require_vae_embedding: false
+  fuse_vae_embedding_in_latents: true
+  action_conditioned: false
+  video_attention_mask_mode: first_frame_causal
+  use_gradient_checkpointing: false
+
+# ActionDiT initialization
+action_dit_pretrained_path: checkpoints/ActionDiT_linear_interp_Wan22_alphascale_1024hdim.pt
+skip_dit_load_from_pretrain: false
+
+# DeltaDiT initialization
+delta_dit_pretrained_path: checkpoints/DeltaDiT_lam_linear_interp_Wan22_alphascale_1024hdim.pt
+skip_delta_dit_load_from_pretrain: false
+
+# Delta tokenizer initialization
+skip_delta_tokenizer_load_from_pretrain: false
+delta_tokenizer_pretrained_path: /root/autodl-tmp/DreamDojo/external/lam_project/exp_ckpts/epoch=18-step=437500.ckpt
+delta_tokenizer_config:
+  impl: lam
+  image_channels: 3
+  lam_model_dim: 1024
+  lam_latent_dim: 32
+  lam_patch_size: 16
+  lam_enc_blocks: 24
+  lam_dec_blocks: 24
+  lam_num_heads: 16
+  lam_dropout: 0.0
+
+# DeltaDiT for LAM latent tokens
+delta_dit_config:
+  delta_token_dim: 32
+  hidden_dim: 1024
+  ffn_dim: 4096
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+  delta_attention_mask_mode: bidirectional
+  use_gradient_checkpointing: ${model.mot_checkpoint_mixed_attn}
+
+# Must match DeltaDiT's num_heads/attn_head_dim/num_layers for MoT mixed attention
+action_dit_config:
+  action_dim: ${data.train.processor.action_output_dim}
+  hidden_dim: 1024
+  ffn_dim: 4096
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+  use_gradient_checkpointing: ${model.mot_checkpoint_mixed_attn}
+
+delta_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+action_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+loss:
+  lambda_delta: 1.0
+  lambda_action: 1.0

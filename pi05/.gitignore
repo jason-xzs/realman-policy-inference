@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Local environments and machine-specific configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+configs/*.local.toml
+
+# Runtime output
+*.log
+log/
+real-records/
+.cache/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store

@@ -1,0 +1,109 @@
+_target_: fastwam.runtime.create_deltawam
+model_id: Wan-AI/Wan2.2-TI2V-5B
+tokenizer_model_id: Wan-AI/Wan2.1-T2V-1.3B
+tokenizer_max_len: 128
+load_text_encoder: true
+proprio_dim: ${data.train.processor.proprio_output_dim}
+redirect_common_files: true
+mot_checkpoint_mixed_attn: true
+delta_expert_impl: wan_lora
+delta_decode_default_mode: pred_prev
+delta_decode_eval_modes: [gt_prev, pred_prev]
+wan_lora_config:
+  train_full: false
+  enabled: true
+  rank: 64
+  alpha: 128.0
+  dropout: 0.0
+  bias: none
+  init_lora_weights: true
+  target_modules:
+    - self_attn.q
+    - self_attn.k
+    - self_attn.v
+    - self_attn.o
+wan_dit_config:
+  has_image_input: false
+  patch_size: [1, 2, 2]
+  in_dim: 48
+  hidden_dim: 3072
+  ffn_dim: 14336
+  freq_dim: 256
+  text_dim: 4096
+  out_dim: 48
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  eps: 1.0e-06
+  seperated_timestep: true
+  require_clip_embedding: false
+  require_vae_embedding: false
+  fuse_vae_embedding_in_latents: true
+  action_conditioned: false
+  video_attention_mask_mode: first_frame_causal
+  use_gradient_checkpointing: false
+
+# Left branch: Wan-LoRA blocks process the first-frame cache and denoise delta tokens.
+delta_dit_config:
+  delta_token_dim: 768
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+  delta_attention_mask_mode: bidirectional
+  use_gradient_checkpointing: ${model.mot_checkpoint_mixed_attn}
+delta_dit_pretrained_path: null
+skip_delta_dit_load_from_pretrain: true
+
+# Right branch: standalone ActionDiT.
+action_dit_pretrained_path: checkpoints/ActionDiT_linear_interp_Wan22_alphascale_1024hdim.pt
+skip_dit_load_from_pretrain: false
+action_dit_config:
+  action_dim: ${data.train.processor.action_output_dim}
+  hidden_dim: 1024
+  ffn_dim: 4096
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+  use_gradient_checkpointing: ${model.mot_checkpoint_mixed_attn}
+
+# Delta tokenizer initialization
+skip_delta_tokenizer_load_from_pretrain: false
+delta_tokenizer_pretrained_path: checkpoints/deltatok-robotwin/last.ckpt
+delta_tokenizer_config:
+  impl: deltatok
+  num_hidden_layers: 12
+  use_delta: true
+  use_decoder_head: null
+  use_decoder_xy_embed: null
+  layer_scale_init: 1.0e-05
+  use_qk_norm: true
+  use_gated_attn: true
+  use_swiglu: true
+  use_rope_aug: true
+  backbone:
+    _target_: fastwam.models.wan22.delta_tokenizer.DINOv3BackboneWithRGBHead
+    backbone_name: checkpoints/dinov3-vitb16-pretrain-lvd1689m
+    rgb_head_path: checkpoints/rgb-head-imagenet/pytorch_model.bin
+    strict_rgb_head: true
+    rgb_head_hidden_size: 1152
+    rgb_head_depth: 28
+    rgb_head_num_heads: 16
+    rgb_head_mlp_size: 4096
+    rgb_head_img_size: 512
+
+delta_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+action_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+loss:
+  lambda_delta: 0.1
+  lambda_action: 1.0

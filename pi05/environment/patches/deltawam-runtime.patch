@@ -1,0 +1,508 @@
+diff --git a/src/realman_deployment/client.py b/src/realman_deployment/client.py
+index 8b73592..90f406a 100644
+--- a/src/realman_deployment/client.py
++++ b/src/realman_deployment/client.py
+@@ -67,6 +67,48 @@ class RemoteInferenceClient:
+         self._request("/v1/reset", {"version": PROTOCOL_VERSION})
+ 
+ 
++def align_action_chunk(
++    actions: list[list[float]],
++    current_left,
++    current_right,
++    *,
++    max_skip: int,
++    min_improvement_rad: float,
++) -> tuple[list[list[float]], dict[str, Any]]:
++    """Align a new absolute-action chunk to the robot state measured after inference."""
++    import numpy as np
++
++    if max_skip < 0:
++        raise ValueError("action_align_max_skip must be non-negative")
++    if min_improvement_rad < 0:
++        raise ValueError("action_align_min_improvement_rad must be non-negative")
++    prediction = np.asarray(actions, dtype=np.float64)
++    left = np.asarray(current_left, dtype=np.float64)
++    right = np.asarray(current_right, dtype=np.float64)
++    if prediction.ndim != 2 or prediction.shape[1] != 16 or not len(prediction):
++        raise ValueError(f"actions must have shape [T,16], got {prediction.shape}")
++    if left.shape != (7,) or right.shape != (7,):
++        raise ValueError("current left/right joints must each contain 7 values")
++    joint_indices = np.asarray([*range(7), *range(8, 15)])
++    current = np.concatenate([right, left])
++    candidate_count = min(len(prediction), int(max_skip) + 1)
++    distances = np.max(
++        np.abs(prediction[:candidate_count, joint_indices] - current[None, :]),
++        axis=1,
++    )
++    best_index = int(np.argmin(distances))
++    improvement = float(distances[0] - distances[best_index])
++    applied_index = best_index if best_index > 0 and improvement >= min_improvement_rad else 0
++    diagnostics = {
++        "selected_index": applied_index,
++        "best_index": best_index,
++        "first_error_rad": float(distances[0]),
++        "selected_error_rad": float(distances[applied_index]),
++        "improvement_rad": improvement,
++        "candidate_count": candidate_count,
++    }
++    return actions[applied_index:], diagnostics
++
+ class BackgroundCameraVideoRecorder:
+     """Record every native camera frame on dedicated writer threads."""
+ 
+@@ -161,7 +203,14 @@ class BackgroundCameraVideoRecorder:
+                             "-c:v", "h264_vaapi", "-qp", "18", "-bf", "0",
+                             "-y", str(output_path),
+                         ]
+-                        process = subprocess.Popen(command, stdin=subprocess.PIPE)
++                        # Keep ffmpeg outside the terminal process group.  The
++                        # parent handles Ctrl+C and closes stdin so ffmpeg can
++                        # flush a complete MP4 trailer and exit successfully.
++                        process = subprocess.Popen(
++                            command,
++                            stdin=subprocess.PIPE,
++                            start_new_session=True,
++                        )
+                     else:
+                         writer = cv2.VideoWriter(
+                             str(output_path), cv2.VideoWriter_fourcc(*self.codec), self.fps, size
+@@ -232,6 +281,12 @@ def run_control_loop(
+     max_replans: int = 0,
+     dry_run: bool = True,
+     stop_event=None,
++    action_alignment: bool = False,
++    action_align_max_skip: int = 8,
++    action_align_min_improvement_rad: float = 0.01,
++    tracking_gate: bool = False,
++    tracking_error_rad: float = 0.05,
++    tracking_timeout_s: float = 2.0,
+ ) -> int:
+     import threading
+ 
+@@ -244,16 +299,41 @@ def run_control_loop(
+         images, state = hardware.observe()
+         started = time.perf_counter()
+         actions, metadata = remote.infer(images, state, instruction, jpeg_quality)
+-        logger.info("received %d actions (server inference=%sms, round-trip=%.1fms)",
+-                    len(actions), metadata.get("inference_ms", "?"), (time.perf_counter() - started) * 1000)
++        received_count = len(actions)
++        round_trip_ms = (time.perf_counter() - started) * 1000
++        if action_alignment:
++            current_left, current_right = hardware.current_joints()
++            actions, alignment = align_action_chunk(
++                actions, current_left, current_right,
++                max_skip=action_align_max_skip,
++                min_improvement_rad=action_align_min_improvement_rad,
++            )
++            logger.info("action chunk alignment: %s", alignment)
++        logger.info(
++            "received %d actions, executing %d (server inference=%sms, round-trip=%.1fms)",
++            received_count, len(actions), metadata.get("inference_ms", "?"), round_trip_ms,
++        )
+         replans += 1
+         deadline = time.monotonic()
+         for action in actions:
+             if stop_event.is_set():
+                 break
++            step_started = time.monotonic()
+             hardware.execute_action(action, dry_run=dry_run)
+-            deadline += period
+-            remaining = deadline - time.monotonic()
++            if tracking_gate and not dry_run:
++                tracking = hardware.wait_for_joint_target(
++                    action,
++                    tolerance_rad=tracking_error_rad,
++                    timeout_s=tracking_timeout_s,
++                    resend_hz=action_hz,
++                    stop_event=stop_event,
++                )
++                logger.info("tracking gate reached target: %s", tracking)
++            if tracking_gate:
++                remaining = period - (time.monotonic() - step_started)
++            else:
++                deadline += period
++                remaining = deadline - time.monotonic()
+             if remaining > 0:
+                 stop_event.wait(remaining)
+     return replans
+@@ -279,13 +359,37 @@ def build_parser() -> argparse.ArgumentParser:
+     parser.add_argument("--gripper-open-threshold", type=float, default=700.0)
+     parser.add_argument("--gripper-confirm-actions", type=int, default=3,
+                         help="binary mode: consecutive samples; 0 disables")
++    parser.add_argument("--align-action-chunk", action="store_true",
++                        help="skip stale leading actions by matching the post-inference robot state")
++    parser.add_argument("--left-gripper-close-threshold", type=float, default=None,
++                        help="left-side override for --gripper-close-threshold")
++    parser.add_argument("--right-gripper-close-threshold", type=float, default=None,
++                        help="right-side override for --gripper-close-threshold")
++    parser.add_argument("--left-gripper-confirm-actions", type=int, default=None,
++                        help="left-side override for --gripper-confirm-actions")
++    parser.add_argument("--right-gripper-confirm-actions", type=int, default=None,
++                        help="right-side override for --gripper-confirm-actions")
++    parser.add_argument("--action-align-max-skip", type=int, default=8,
++                        help="maximum number of leading actions that alignment may skip")
++    parser.add_argument("--action-align-min-improvement-rad", type=float, default=0.01,
++                        help="minimum max-joint-error improvement required before skipping")
+     parser.add_argument("--gripper-confirm-seconds", type=float, default=0.0,
+                         help="binary mode: duration; 0 disables; actions/time use OR")
+     parser.add_argument("--max-sync-skew-ms", type=float, default=50.0,
+                         help="reject observations whose three frames/dual-arm state span exceeds this")
+     parser.add_argument("--record-dir", default="log/realman_demo",
+                         help="record all native camera frames to three background videos")
++    parser.add_argument("--gripper-before-arm", action="store_true",
++                        help="wait for changed grippers to finish before sending arm targets")
++    parser.add_argument("--gripper-blocking-timeout", type=float, default=5.0,
++                        help="seconds to wait for each blocking gripper command")
+     parser.add_argument("--record-fps", type=float, default=30.0, help="camera video FPS")
++    parser.add_argument("--tracking-gate", action="store_true",
++                        help="wait and resend each joint target until physical tracking error is small")
++    parser.add_argument("--tracking-error-rad", type=float, default=0.05,
++                        help="maximum physical joint error before advancing to the next action")
++    parser.add_argument("--tracking-timeout", type=float, default=2.0,
++                        help="maximum seconds to wait for each action target")
+     parser.add_argument("--record-codec", default="h264_vaapi",
+                         help="h264_vaapi (default, hardware MP4) or MJPG (software AVI)")
+     parser.add_argument("--record-queue-size", type=int, default=256,
+@@ -322,8 +426,14 @@ def main(argv: list[str] | None = None) -> None:
+             gripper_mode=args.gripper_mode,
+             gripper_close_threshold=args.gripper_close_threshold,
+             gripper_open_threshold=args.gripper_open_threshold,
++            left_gripper_close_threshold=args.left_gripper_close_threshold,
++            right_gripper_close_threshold=args.right_gripper_close_threshold,
++            left_gripper_confirm_actions=args.left_gripper_confirm_actions,
++            right_gripper_confirm_actions=args.right_gripper_confirm_actions,
+             gripper_confirm_actions=args.gripper_confirm_actions,
+             gripper_confirm_seconds=args.gripper_confirm_seconds,
++            gripper_before_arm=args.gripper_before_arm,
++            gripper_blocking_timeout_s=args.gripper_blocking_timeout,
+             max_sync_skew_ms=args.max_sync_skew_ms, sync_timeout_s=args.sync_timeout,
+             frame_recorder=recorder,
+         )
+@@ -345,6 +455,12 @@ def main(argv: list[str] | None = None) -> None:
+             hardware, remote, instruction=args.instruction, action_hz=args.action_hz,
+             jpeg_quality=args.jpeg_quality, max_replans=args.max_replans,
+             dry_run=not args.execute, stop_event=stop_event,
++            action_alignment=args.align_action_chunk,
++            action_align_max_skip=args.action_align_max_skip,
++            action_align_min_improvement_rad=args.action_align_min_improvement_rad,
++            tracking_gate=args.tracking_gate,
++            tracking_error_rad=args.tracking_error_rad,
++            tracking_timeout_s=args.tracking_timeout,
+         )
+     except Exception:
+         hardware.stop()
+diff --git a/src/realman_deployment/hardware.py b/src/realman_deployment/hardware.py
+index 21f966c..91ac2ba 100644
+--- a/src/realman_deployment/hardware.py
++++ b/src/realman_deployment/hardware.py
+@@ -44,19 +44,6 @@ def orient_deployment_images(images: dict[str, Any]) -> dict[str, Any]:
+         "right_wrist_rgb": images["right_wrist_rgb"][::-1, ::-1].copy(),
+     }
+ 
+-def prepare_inference_images(
+-    images: dict[str, Any], *, width: int = 640, height: int = 480
+-) -> dict[str, Any]:
+-    """Apply deployment orientation and preserve the established inference resolution."""
+-    import cv2
+-
+-    oriented = orient_deployment_images(images)
+-    return {
+-        name: image if image.shape[:2] == (height, width) else cv2.resize(
+-            image, (width, height), interpolation=cv2.INTER_AREA
+-        )
+-        for name, image in oriented.items()
+-    }
+ 
+ def select_synchronized_frames(
+     buffers: dict[str, list[TimedFrame]],
+@@ -257,16 +244,24 @@ class BinaryGripperHysteresis:
+         confirm_actions: int,
+         confirm_seconds: float,
+     ) -> None:
+-        if not 0.0 <= close_threshold < open_threshold <= 1000.0:
+-            raise ValueError("gripper thresholds must satisfy 0 <= close < open <= 1000")
+-        if confirm_actions < 0 or confirm_seconds < 0:
+-            raise ValueError("gripper confirmation actions/seconds must be non-negative")
+-        if confirm_actions == 0 and confirm_seconds == 0:
+-            raise ValueError("enable gripper confirmation by actions, seconds, or both")
+-        self.close_threshold = float(close_threshold)
+-        self.open_threshold = float(open_threshold)
+-        self.confirm_actions = int(confirm_actions)
+-        self.confirm_seconds = float(confirm_seconds)
++        def per_side(value, cast, name):
++            if isinstance(value, dict):
++                if set(value) != {"left", "right"}:
++                    raise ValueError(f"{name} dict must contain left and right")
++                return {side: cast(value[side]) for side in ("left", "right")}
++            return {side: cast(value) for side in ("left", "right")}
++
++        self.close_threshold = per_side(close_threshold, float, "close_threshold")
++        self.open_threshold = per_side(open_threshold, float, "open_threshold")
++        self.confirm_actions = per_side(confirm_actions, int, "confirm_actions")
++        self.confirm_seconds = per_side(confirm_seconds, float, "confirm_seconds")
++        for side in ("left", "right"):
++            if not 0.0 <= self.close_threshold[side] < self.open_threshold[side] <= 1000.0:
++                raise ValueError(f"{side} gripper thresholds must satisfy 0 <= close < open <= 1000")
++            if self.confirm_actions[side] < 0 or self.confirm_seconds[side] < 0:
++                raise ValueError(f"{side} gripper confirmation actions/seconds must be non-negative")
++            if self.confirm_actions[side] == 0 and self.confirm_seconds[side] == 0:
++                raise ValueError(f"enable {side} gripper confirmation by actions, seconds, or both")
+         self._states = {
+             side: {"commanded": None, "candidate": None, "count": 0, "since": None}
+             for side in ("left", "right")
+@@ -276,8 +271,8 @@ class BinaryGripperHysteresis:
+         if side not in self._states or not math.isfinite(float(value)):
+             raise ValueError(f"invalid gripper sample side={side!r} value={value!r}")
+         now = time.monotonic() if now is None else float(now)
+-        desired = "closed" if value <= self.close_threshold else (
+-            "open" if value >= self.open_threshold else None
++        desired = "closed" if value <= self.close_threshold[side] else (
++            "open" if value >= self.open_threshold[side] else None
+         )
+         state = self._states[side]
+         if desired is None or desired == state["commanded"]:
+@@ -287,8 +282,8 @@ class BinaryGripperHysteresis:
+             state.update(candidate=desired, count=1, since=now)
+         else:
+             state["count"] += 1
+-        actions_ready = self.confirm_actions > 0 and state["count"] >= self.confirm_actions
+-        time_ready = self.confirm_seconds > 0 and now - state["since"] >= self.confirm_seconds
++        actions_ready = self.confirm_actions[side] > 0 and state["count"] >= self.confirm_actions[side]
++        time_ready = self.confirm_seconds[side] > 0 and now - state["since"] >= self.confirm_seconds[side]
+         if not (actions_ready or time_ready):
+             return None
+         state.update(commanded=desired, candidate=None, count=0, since=None)
+@@ -318,6 +313,22 @@ class MockRealManHardware:
+                  + self.right_joints.tolist() + [self.right_gripper] + right_pose)
+         return {key: value.copy() for key, value in self.images.items()}, state
+ 
++    def current_joints(self):
++        return self.left_joints.copy(), self.right_joints.copy()
++
++    def wait_for_joint_target(
++        self, action, *, tolerance_rad: float, timeout_s: float,
++        resend_hz: float, stop_event=None,
++    ):
++        if tolerance_rad <= 0 or timeout_s <= 0 or resend_hz <= 0:
++            raise ValueError("tracking gate tolerance, timeout, and resend_hz must be positive")
++        return {
++            "final_error_rad": 0.0,
++            "elapsed_s": 0.0,
++            "checks": 1,
++            "resends": 0,
++        }
++
+     def execute_action(self, action: list[float], **_: Any) -> None:
+         if len(action) != ACTION_DIM:
+             raise ProtocolError(f"action must have {ACTION_DIM} values")
+@@ -357,7 +368,13 @@ class RealManHardware:
+         gripper_mode: str = "position",
+         gripper_close_threshold: float = 300.0,
+         gripper_open_threshold: float = 700.0,
++        left_gripper_close_threshold: float | None = None,
++        right_gripper_close_threshold: float | None = None,
++        left_gripper_confirm_actions: int | None = None,
++        right_gripper_confirm_actions: int | None = None,
+         frame_recorder=None,
++        gripper_before_arm: bool = False,
++        gripper_blocking_timeout_s: float = 5.0,
+         gripper_confirm_actions: int = 3,
+         gripper_confirm_seconds: float = 0.0,
+         max_sync_skew_ms: float = 50.0,
+@@ -385,12 +402,26 @@ class RealManHardware:
+             raise ValueError("gripper_mode must be position or binary-hysteresis")
+         self.gripper_mode = gripper_mode
+         self.binary_grippers = BinaryGripperHysteresis(
+-            close_threshold=gripper_close_threshold,
++            close_threshold={
++                "left": gripper_close_threshold if left_gripper_close_threshold is None
++                else left_gripper_close_threshold,
++                "right": gripper_close_threshold if right_gripper_close_threshold is None
++                else right_gripper_close_threshold,
++            },
+             open_threshold=gripper_open_threshold,
+-            confirm_actions=gripper_confirm_actions,
++            confirm_actions={
++                "left": gripper_confirm_actions if left_gripper_confirm_actions is None
++                else left_gripper_confirm_actions,
++                "right": gripper_confirm_actions if right_gripper_confirm_actions is None
++                else right_gripper_confirm_actions,
++            },
+             confirm_seconds=gripper_confirm_seconds,
+         ) if gripper_mode == "binary-hysteresis" else None
+ 
++        if gripper_blocking_timeout_s <= 0:
++            raise ValueError("gripper_blocking_timeout_s must be positive")
++        self.gripper_before_arm = bool(gripper_before_arm)
++        self.gripper_blocking_timeout_s = float(gripper_blocking_timeout_s)
+         self._last_grippers: dict[str, int | None] = {"left": None, "right": None}
+         self._lock = threading.Lock()
+         self._closed = False
+@@ -414,15 +445,10 @@ class RealManHardware:
+             raise HardwareError("three distinct RealSense serial numbers are required")
+         self.cameras = {}
+         try:
+-            camera_sizes = (
+-                ((1920, 1080), (1280, 720), (1280, 720))
+-                if frame_recorder is not None else
+-                ((640, 480), (640, 480), (640, 480))
+-            )
+-            for name, camera_id, (width, height) in zip(CAMERA_NAMES, serials, camera_sizes):
++            for name, camera_id in zip(CAMERA_NAMES, serials):
+                 self.cameras[name] = D435(
+                     id=camera_id, depth=False, name=name,
+-                    color_width=width, color_height=height, color_fps=30,
++                    color_width=640, color_height=480, color_fps=30,
+                 )
+             self.camera_rig = BufferedCameraRig(
+                 self.cameras,
+@@ -466,7 +492,7 @@ class RealManHardware:
+             (right_joints, right_pose, right_gripper), right_timestamp_ns = right_future.result()
+         state_timestamp_ns = (left_timestamp_ns + right_timestamp_ns) // 2
+         images, sync_metadata = self.camera_rig.capture_near(state_timestamp_ns)
+-        images = prepare_inference_images(images)
++        images = orient_deployment_images(images)
+         sync_metadata["left_arm_offset_ms"] = (left_timestamp_ns - state_timestamp_ns) / 1_000_000.0
+         sync_metadata["right_arm_offset_ms"] = (right_timestamp_ns - state_timestamp_ns) / 1_000_000.0
+         all_timestamps = [
+@@ -512,6 +538,70 @@ class RealManHardware:
+                 values.append(joints)
+         return values[0], values[1]
+ 
++    def current_joints(self):
++        return self._current_joints()
++
++    def wait_for_joint_target(
++        self, action, *, tolerance_rad: float, timeout_s: float,
++        resend_hz: float, stop_event=None,
++    ):
++        import numpy as np
++
++        if tolerance_rad <= 0 or timeout_s <= 0 or resend_hz <= 0:
++            raise ValueError("tracking gate tolerance, timeout, and resend_hz must be positive")
++        target = np.asarray(action, dtype=np.float64)
++        if target.shape != (ACTION_DIM,) or not np.isfinite(target).all():
++            raise SafetyError("invalid target for tracking gate")
++        target_right = target[0:7]
++        target_left = target[8:15]
++        right_deg = np.rad2deg(target_right).tolist()
++        left_deg = np.rad2deg(target_left).tolist()
++        period = 1.0 / float(resend_hz)
++        started = time.monotonic()
++        next_check = started + period
++        checks = 0
++        resends = 0
++        while True:
++            wait_s = max(0.0, next_check - time.monotonic())
++            if stop_event is not None:
++                if stop_event.wait(wait_s):
++                    raise HardwareError("tracking gate interrupted by stop request")
++            elif wait_s > 0:
++                time.sleep(wait_s)
++            current_left, current_right = self._current_joints()
++            right_error = np.abs(target_right - current_right)
++            left_error = np.abs(target_left - current_left)
++            max_error = max(float(np.max(right_error)), float(np.max(left_error)))
++            checks += 1
++            elapsed = time.monotonic() - started
++            if max_error <= tolerance_rad:
++                return {
++                    "final_error_rad": max_error,
++                    "elapsed_s": elapsed,
++                    "checks": checks,
++                    "resends": resends,
++                }
++            if elapsed >= timeout_s:
++                right_index = int(np.argmax(right_error))
++                left_index = int(np.argmax(left_error))
++                if right_error[right_index] >= left_error[left_index]:
++                    detail = f"right joint {right_index + 1}"
++                else:
++                    detail = f"left joint {left_index + 1}"
++                raise SafetyError(
++                    f"tracking gate timeout after {elapsed:.3f}s: max error "
++                    f"{max_error:.4f} rad at {detail} exceeds {tolerance_rad:.4f}"
++                )
++            with self._lock:
++                self._check(self.right_arm.rm_movej_canfd(
++                    right_deg, False, trajectory_mode=self.trajectory_mode, radio=self.smoothing
++                ), "resend right arm tracking target")
++                self._check(self.left_arm.rm_movej_canfd(
++                    left_deg, False, trajectory_mode=self.trajectory_mode, radio=self.smoothing
++                ), "resend left arm tracking target")
++            resends += 1
++            next_check = max(next_check + period, time.monotonic())
++
+     def execute_action(self, action: list[float], *, dry_run: bool = False) -> None:
+         import numpy as np
+ 
+@@ -537,37 +627,49 @@ class RealManHardware:
+ 
+         right_deg = np.rad2deg(target_right).tolist()
+         left_deg = np.rad2deg(target_left).tolist()
++        if self.binary_grippers is not None:
++            gripper_targets = [
++                (side, self.right_arm if side == "right" else self.left_arm, position)
++                for side, position in binary_commands
++            ]
++        else:
++            gripper_targets = []
++            for side, arm, value in (
++                ("right", self.right_arm, target[7]), ("left", self.left_arm, target[15])
++            ):
++                position = int(round(float(np.clip(value, 1.0, 1000.0))))
++                previous = self._last_grippers[side]
++                if previous is None or abs(position - previous) >= self.gripper_threshold:
++                    gripper_targets.append((side, arm, position))
+         gripper_updates = []
++
++        def send_grippers(blocking: bool) -> None:
++            timeout = max(1, int(math.ceil(self.gripper_blocking_timeout_s))) if blocking else 0
++            for side, arm, position in gripper_targets:
++                self._check(
++                    arm.rm_set_gripper_position(position, blocking, timeout),
++                    f"move {side} gripper",
++                )
++                self._last_grippers[side] = position
++                gripper_updates.append(f"{side}={position}")
++
+         with self._lock:
++            if self.gripper_before_arm and gripper_targets:
++                send_grippers(blocking=True)
+             self._check(self.right_arm.rm_movej_canfd(
+                 right_deg, False, trajectory_mode=self.trajectory_mode, radio=self.smoothing
+             ), "move right arm")
+             self._check(self.left_arm.rm_movej_canfd(
+                 left_deg, False, trajectory_mode=self.trajectory_mode, radio=self.smoothing
+             ), "move left arm")
+-            if self.binary_grippers is not None:
+-                gripper_targets = [
+-                    (side, self.right_arm if side == "right" else self.left_arm, position)
+-                    for side, position in binary_commands
+-                ]
+-            else:
+-                gripper_targets = []
+-                for side, arm, value in (
+-                    ("right", self.right_arm, target[7]), ("left", self.left_arm, target[15])
+-                ):
+-                    position = int(round(float(np.clip(value, 1.0, 1000.0))))
+-                    previous = self._last_grippers[side]
+-                    if previous is None or abs(position - previous) >= self.gripper_threshold:
+-                        gripper_targets.append((side, arm, position))
+-            for side, arm, position in gripper_targets:
+-                self._check(arm.rm_set_gripper_position(position, False, 0), f"move {side} gripper")
+-                self._last_grippers[side] = position
+-                gripper_updates.append(f"{side}={position}")
++            if not self.gripper_before_arm and gripper_targets:
++                send_grippers(blocking=False)
+         self._executed_action_count += 1
+         logger.info(
+-            "executed hardware action #%d; max joint delta %.4f rad; grippers=%s",
++            "executed hardware action #%d; max joint delta %.4f rad; grippers=%s; order=%s",
+             self._executed_action_count, max_delta,
+             ",".join(gripper_updates) if gripper_updates else "unchanged",
++            "gripper-before-arm" if self.gripper_before_arm else "arm-before-gripper",
+         )
+ 
+     def stop(self) -> None:

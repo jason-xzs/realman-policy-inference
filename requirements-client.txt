@@ -1,0 +1,13 @@
+# Install in the robot-side Python 3.11 environment.
+numpy>=1.26,<2
+opencv-python-headless==4.10.0.84
+Pillow>=10
+pyrealsense2>=2.55
+pyserial>=3.5
+scipy>=1.11
+msgpack>=1
+websockets>=15,<16
+PyYAML>=6
+toml>=0.10
+rich>=13
+typing-extensions>=4.12

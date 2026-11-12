@@ -1,0 +1,28 @@
+[project]
+name = "robot-client-runtime"
+version = "0.1.0"
+description = "Supervised RealMan dual-arm pi0.5 client runtime"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+check-pi05-environment = "robot_client_runtime.environment_check:main"
+run-pi05-realman = "robot_client_runtime.production_pi05:main"
+run-rr-dep-003 = "robot_client_runtime.rr_dep_003:main"
+run-rr-dep-004 = "robot_client_runtime.rr_dep_004:main"
+
+[project.optional-dependencies]
+client = [
+  "numpy==1.26.4",
+  "Pillow==12.3.0",
+  "PyYAML==6.0.3",
+  "pyrealsense2==2.58.1.10581",
+  "opencv-python==4.10.0.84",
+]
+rr-dep-003 = [
+  "numpy==1.26.4",
+  "Pillow==12.3.0",
+  "PyYAML==6.0.3",
+  "pyrealsense2==2.58.1.10581",
+  "opencv-python==4.10.0.84",
+]

@@ -1,0 +1,153 @@
+schema_version = 1
+
+[default.cameras]
+head = "420122071413"
+left_wrist = "323622272614"
+right_wrist = "230422272673"
+width = 640
+height = 480
+fps = 30
+format = "bgr8"
+
+[default.robots.left]
+ip = "192.168.1.18"
+port = 8080
+local_ip = "192.168.1.100"
+udp_port = 8090
+
+[default.robots.right]
+ip = "192.168.1.19"
+port = 8080
+local_ip = "192.168.1.101"
+udp_port = 8089
+
+[default.initial_pose]
+command_api = "rm_movej"
+joint_order = "q1_q7"
+left_joint_deg = [-0.328, -0.396, -0.420, 43.949, 1.288, 116.485, -27.627]
+right_joint_deg = [-0.265, -0.506, -0.157, 43.954, 1.220, 121.749, -0.186]
+left_speed_percent = 80
+right_speed_percent = 10
+gripper_open_position = 1000
+joint_tolerance_rad = 0.01
+gripper_tolerance = 50
+settle_timeout_sec = 60.0
+stable_window_sec = 0.25
+stable_span_threshold_rad = 0.01
+poll_hz = 20.0
+
+[default.sources]
+deltawam_src = "/home/robot2/deltawam/src"
+
+[default.policy]
+host = "127.0.0.1"
+port = 18200
+request_timeout_sec = 300.0
+
+[default.execution]
+mode = "execute"
+max_replans = 1000
+confirmation = "enter"
+log_level = "INFO"
+
+[default.observation]
+captured_state_dimension = 28
+captured_state_order = "left_joints_gripper_eef_then_right_joints_gripper_eef"
+state_dimension = 16
+state_order = "left_q1_q7_gripper_then_right_q1_q7_gripper"
+mapping_28_to_16 = [0, 1, 2, 3, 4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20, 21]
+model_image_size = 224
+
+[default.action]
+canonical_dimension = 16
+canonical_order = "left_q1_q7_gripper_then_right_q1_q7_gripper"
+target_mode = "direct_absolute"
+allowed_source_dimensions = [16]
+mapping_28_to_16 = [0, 1, 2, 3, 4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20, 21]
+row_index = 0
+actions_per_chunk = 20
+action_hz = 30.0
+required_dtype = "float32"
+require_finite = true
+command_order = ["right", "left"]
+
+[default.runtime]
+state_stale_sec = 1
+max_sync_skew_sec = 1
+response_to_command_sec = 10.0
+watchdog_hz = 20.0
+sdk_lock_timeout_sec = 2.0
+sync_timeout_sec = 8.0
+startup_timeout_sec = 60.0
+action_call_timeout_sec = 5.0
+chunk_settle_timeout_sec = 5.0
+chunk_stable_window_sec = 0.25
+chunk_stable_span_threshold_rad = 0.01
+chunk_settle_poll_hz = 20.0
+shutdown_grace_sec = 5.0
+emergency_stop_timeout_sec = 5.0
+controller_query_retries = 10
+controller_query_backoff_sec = 0.05
+
+[default.motion]
+speed_percent = 20
+command_api = "rm_movej_canfd"
+follow = false
+trajectory_mode = 2
+smoothing = 50
+software_joint_step_limit_enabled = true
+max_joint_step_rad = 2.0
+target_tolerance_rad = 0.01
+command_timeout_sec = 5.0
+
+[default.gripper]
+mode = "binary_threshold"
+commands_enabled = true
+close_threshold = 0.3
+open_threshold = 0.7
+value_tolerance = 0.05
+close_position = 1
+open_position = 1000
+
+[default.recording]
+enabled = false
+root_dir = "/home/robot2/jhk/phywam-mope-real/real-records"
+cache_dir = "/home/robot2/jhk/phywam-mope-real/real-records/.cache"
+subdirectory = ""
+fps = 30.0
+codec = "h264_vaapi"
+queue_size = 256
+shutdown_timeout_sec = 120.0
+
+[presets."pi05-organize-15000".policy]
+expected_config = "pi05_realman_joint_16d_step15000_ema"
+expected_checkpoint = "/share/jhk/phywam-mope-real/checkpoints/finetuned/pi05/RR-BL-008/RR-BL-008-RUN-001/15000"
+prompt = "Place the three objects into the blue container."
+[presets."pi05-organize-15000".gripper]
+close_threshold = 0.4
+open_threshold = 0.7
+[presets."pi05-organize-15000".recording]
+enabled = true
+subdirectory = "pi05-organize-15000-002"
+
+[presets."pi05-sugar-15000".policy]
+expected_config = "pi05_realman_joint_16d_step15000_ema"
+expected_checkpoint = "/share/jhk/phywam-mope-real/checkpoints/finetuned/pi05/RR-BL-009/RR-BL-009-RUN-001/15000"
+prompt = "Place the small block into the mug."
+[presets."pi05-sugar-15000".gripper]
+close_threshold = 0.4
+open_threshold = 0.7
+[presets."pi05-sugar-15000".recording]
+enabled = true
+subdirectory = "pi05-sugar-15000-010"
+
+[presets."pi05-bowls-15000".policy]
+expected_config = "pi05_realman_joint_16d_step15000_ema"
+expected_checkpoint = "/share/jhk/phywam-mope-real/checkpoints/finetuned/pi05/RR-BL-010/RR-BL-010-RUN-001/15000"
+prompt = "Pick up the rightmost brown paper bowl and place it on top of the center bowl. Then pick up the leftmost brown paper bowl and place it on top of the stack in the center."
+[presets."pi05-bowls-15000".gripper]
+close_threshold = 0.4
+open_threshold = 0.7
+[presets."pi05-bowls-15000".recording]
+enabled = true
+subdirectory = "pi05-bowls-15000-010"

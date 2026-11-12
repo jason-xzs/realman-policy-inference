@@ -1,0 +1,120 @@
+schema_version = 1
+snapshot_date = "2026-08-30"
+
+[system]
+os = "Ubuntu 24.04.4 LTS"
+kernel = "Linux 6.8.0-138-generic"
+architecture = "x86_64"
+python = "3.11.15"
+ffmpeg = "6.1.1-3ubuntu5"
+render_node = "/dev/dri/renderD128"
+
+[external_sources]
+deltawam_git_commit = "9a7389356c83e0da90af88cc7d0e1c706dc16baa"
+r3kit_git_commit = "7fad4962c65c353694c1d213a07a9852fd9e43f0"
+
+[[repository_files]]
+path = "environment/patches/deltawam-runtime.patch"
+sha256 = "21df530b216711bf547b5550531d25b9a97380b718383b65e3733156472f15da"
+role = "tracked deltawam active-runtime changes"
+
+[[repository_files]]
+path = "environment/patches/r3kit-realsense.patch"
+sha256 = "e1c2cc561f9451da04ed781308f5aa1ef4b0c6e222a3d6317dbfb0c6ff05cca9"
+role = "r3kit D435 profile changes"
+
+[[python_packages]]
+distribution = "absl-py"
+version = "2.5.0"
+
+[[python_packages]]
+distribution = "attrs"
+version = "26.1.0"
+
+[[python_packages]]
+distribution = "dm-tree"
+version = "0.1.10"
+
+[[python_packages]]
+distribution = "msgpack"
+version = "1.2.1"
+
+[[python_packages]]
+distribution = "numpy"
+version = "1.26.4"
+
+[[python_packages]]
+distribution = "opencv-python"
+version = "4.10.0.84"
+
+[[python_packages]]
+distribution = "openpi-client"
+version = "0.1.0"
+
+[[python_packages]]
+distribution = "packaging"
+version = "26.3"
+
+[[python_packages]]
+distribution = "pillow"
+version = "12.3.0"
+
+[[python_packages]]
+distribution = "pyrealsense2"
+version = "2.58.1.10581"
+
+[[python_packages]]
+distribution = "PyYAML"
+version = "6.0.3"
+
+[[python_packages]]
+distribution = "typing_extensions"
+version = "4.16.0"
+
+[[python_packages]]
+distribution = "websockets"
+version = "17.0.1"
+
+[[python_packages]]
+distribution = "wrapt"
+version = "2.3.0"
+
+[[external_files]]
+path = "realman_deployment/client.py"
+sha256 = "2495a053f6ac48cdf57924abac25205de57ee6ebd00cd9c579bbb4270d68d5ec"
+role = "background three-camera recorder"
+
+[[external_files]]
+path = "realman_deployment/hardware.py"
+sha256 = "db878ed3f7f28f7188118520f08b3bafe6b32db968ce093e859ff7fd01b1f800"
+role = "RealManHardware implementation"
+
+[[external_files]]
+path = "realman_deployment/protocol.py"
+sha256 = "43be9600075756cb0e14f11f95c87b1dab353b11e9f8800828dc67fa252ae5ac"
+role = "hardware action and observation protocol"
+
+[[external_files]]
+path = "realman_deployment/Robotic_Arm/rm_robot_interface.py"
+sha256 = "3fffdcbc4448b24d8dd9ad0a415988f892ed4daa7e5d5c78b39830b06ba13420"
+role = "RealMan Python SDK wrapper"
+
+[[external_files]]
+path = "realman_deployment/Robotic_Arm/rm_ctypes_wrap.py"
+sha256 = "6d31db234d0f390ec2106d088765245f0705d17c8bfd756e51ff48f69e193ac6"
+role = "RealMan ctypes bindings"
+
+[[external_files]]
+path = "realman_deployment/Robotic_Arm/libs/linux_x86/libapi_c.so"
+sha256 = "6a5d96ff8144d04a5058e77ef37bf7da72904e4a336921eb1917c72a3772a036"
+role = "RealMan x86_64 native SDK"
+
+[[external_files]]
+path = "realman_deployment/r3kit/r3kit/devices/camera/realsense/d435.py"
+sha256 = "00de8c34fe33ab7c72885bfb39fab9cf492bcbec6457702b9d76a0f336d89cab"
+role = "D435 adapter"
+
+[[external_files]]
+path = "realman_deployment/r3kit/r3kit/devices/camera/realsense/d415.py"
+sha256 = "5a091e5cd698dba92cabddde1e94f22517d3f836abb3dbe474463ac56697fa2a"
+role = "RealSense implementation used by D435"

@@ -1,0 +1,71 @@
+train: &realman_demo_dataset
+  _target_: fastwam.datasets.lerobot.robot_video_dataset.RobotVideoDataset
+  dataset_dirs: []
+  shape_meta:
+    images:
+      - {key: high_rgb, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: left_wrist_rgb, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: right_wrist_rgb, raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+    action:
+      - {key: default, raw_shape: 28, shape: 16}
+    state:
+      - {key: default, raw_shape: 28, shape: 16}
+  num_frames: 33
+  global_sample_stride: 1
+  action_video_freq_ratio: 4
+  video_size: [384, 320]
+  val_set_proportion: 0.05
+  is_training_set: true
+  pretrained_norm_stats: null
+  skip_padding_as_possible: false
+  concat_multi_camera: robotwin
+  override_instruction: ${override_instruction}
+  processor:
+    _target_: fastwam.datasets.lerobot.processors.fastwam_processor.FastWAMProcessor
+    shape_meta: ${data.train.shape_meta}
+    num_obs_steps: ${data.train.num_frames}
+    num_output_cameras: 3
+    action_output_dim: 16
+    proprio_output_dim: 16
+    action_state_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.realman.RealManDualArmToPretrain
+        gripper_scale: 1000.0
+    use_stepwise_action_norm: false
+    norm_default_mode: z-score
+    norm_exception_mode: null
+    action_state_merger:
+      _target_: fastwam.datasets.lerobot.transforms.action_state_merger.ConcatLeftAlign
+    train_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.image.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [240, 320]
+    val_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.image.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [240, 320]
+  text_embedding_cache_dir: null
+  context_len: 128
+
+val:
+  <<: *realman_demo_dataset
+  dataset_dirs: ${data.train.dataset_dirs}
+  pretrained_norm_stats: ${data.train.pretrained_norm_stats}
+  is_training_set: false
+  processor:
+    _target_: fastwam.datasets.lerobot.processors.fastwam_processor.FastWAMProcessor
+    shape_meta: ${data.train.shape_meta}
+    num_obs_steps: ${data.train.num_frames}
+    num_output_cameras: 3
+    action_output_dim: 16
+    proprio_output_dim: 16
+    action_state_transforms:
+      - _target_: fastwam.datasets.lerobot.transforms.realman.RealManDualArmToPretrain
+        gripper_scale: 1000.0
+    use_stepwise_action_norm: false
+    norm_default_mode: z-score
+    norm_exception_mode: null
+    action_state_merger:
+      _target_: fastwam.datasets.lerobot.transforms.action_state_merger.ConcatLeftAlign
+    train_transforms: ${data.train.processor.train_transforms}
+    val_transforms: ${data.train.processor.val_transforms}
+

@@ -1,0 +1,2 @@
+# Preserve exact external-source patches, including their original whitespace.
+environment/patches/*.patch whitespace=-trailing-space

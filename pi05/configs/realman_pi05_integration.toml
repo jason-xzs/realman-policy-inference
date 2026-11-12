@@ -1,0 +1,41 @@
+[identity]
+task_id = "RR-DEP-001"
+run_id = "RR-DEP-001-RUN-001"
+schema_id = "realman.dual_arm.absolute.v1"
+
+[action]
+canonical_dimension = 16
+canonical_order = "left_q1..q7,left_gripper,right_q1..q7,right_gripper"
+input_28d_mapping = [0, 1, 2, 3, 4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20, 21]
+discarded_28d_indices = [8, 9, 10, 11, 12, 13, 22, 23, 24, 25, 26, 27]
+native_16d_identity_enabled = true
+input_32d_unpadding_enabled = false
+input_32d_layout_confirmation = "pending_RR-DEP-002"
+input_32d_required_layout = "first-28-native-plus-last-4-padding"
+
+[observation]
+state_dimension = 28
+state_order = "left-joints-gripper-eef-then-right-joints-gripper-eef"
+high_rgb_openpi_key = "base_0_rgb"
+left_wrist_rgb_openpi_key = "left_wrist_0_rgb"
+right_wrist_rgb_openpi_key = "right_wrist_0_rgb"
+
+[gripper]
+numeric_range = "unresolved"
+normalization = "unresolved"
+realman_sdk_conversion = "unresolved"
+clamp_enabled = false
+
+[integration]
+fixture_mock_only = true
+openpi_websocket_enabled = false
+live_sensing_enabled = false
+realman_sdk_enabled = false
+device_open_enabled = false
+motion_enabled = false
+
+[checkpoint]
+path = "/share/jhk/phywam-mope-real/checkpoints/finetuned/pi05/RR-BL-003/RR-BL-003-RUN-001/attempt-001/30000"
+role = "integration_only"
+selection_status = "not_selected"
+client_access = false

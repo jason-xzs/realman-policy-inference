@@ -1,0 +1,31 @@
+[identity]
+task_id = "RR-DEP-003"
+run_id = "RR-DEP-003-RUN-001"
+
+[cameras]
+# Exact current FastWAM run_realman_fastwam_client.sh defaults frozen for this run.
+head = "420122071413"
+left_wrist = "323622272614"
+right_wrist = "230422272673"
+width = 640
+height = 480
+fps = 30
+format = "bgr8"
+
+[robots.left]
+ip = "192.168.1.18"
+port = 8080
+
+[robots.right]
+ip = "192.168.1.19"
+port = 8080
+
+[sources]
+deltawam_src = "/home/robot2/deltawam/src"
+
+[motion]
+speed_percent = 5
+q7_delta_rad = 0.01
+state_hz = 20.0
+stale_timeout_sec = 0.25
+command_timeout_sec = 5.0

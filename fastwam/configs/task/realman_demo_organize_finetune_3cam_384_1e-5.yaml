@@ -1,0 +1,43 @@
+# @package _global_
+
+defaults:
+  - override /data: realman_demo_finetune
+  - override /model: fastwam
+  - _self_
+
+override_instruction: "The right arm first picks up the object on the right and places it into the basket, then the left arm picks up the two objects on the left and places them into the basket."
+
+data:
+  train:
+    dataset_dirs: &dataset_dirs
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0810_20
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_10
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_14
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_15
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_16
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_17
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_19
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_195
+      - /nix/yanhan/deltawam/data/realman_demo_data/realman_teleop_vr_dual_organize_0811_201
+    pretrained_norm_stats: ./data/realman_demo_finetune/organize/dataset_stats.json
+    text_embedding_cache_dir: ./data/text_embeds_cache/realman_demo_organize
+  val:
+    dataset_dirs: *dataset_dirs
+    pretrained_norm_stats: ./data/realman_demo_finetune/organize/dataset_stats.json
+    text_embedding_cache_dir: ./data/text_embeds_cache/realman_demo_organize
+
+batch_size: 8
+num_workers: 12
+model:
+  mot_checkpoint_mixed_attn: false
+learning_rate: 1.0e-5
+lr_scheduler_type: cosine
+max_steps: 15000
+num_epochs: 1
+log_every: 10
+save_every: 5000
+eval_every: 5000
+gradient_accumulation_steps: 1
+weight_decay: 1.0e-2
+resume: /nix/yanhan/deltawam/runs/realman_rmc_aidal_uncond_3cam_384_1e-4/2026-08-15_15-13-21/checkpoints/weights/step_050000.pt
+

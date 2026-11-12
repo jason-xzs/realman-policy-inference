@@ -1,0 +1,57 @@
+# @package _global_
+
+defaults:
+  - override /data: realman_rmc_aidal
+  - override /model: fastwam
+  - _self_
+
+# Only episodes whose top-level dataset directory is listed here are used.
+# Set to null to train on every available RealMan task.
+realman_subset:
+  train_task_names:
+    - basket_storage_banana
+    - basket_storage_egg_yolk_pastry
+    - basket_storage_long_bread
+    - basket_storage_orange
+    - basket_storage_peach
+    - desktop_storage
+    - food_packaging
+    - food_storage
+    - fruit_storage
+    #- get_water
+    #- glasses_storage
+    - place_towel
+    - pour_bowl_repeatedly
+    - pour_coffee_beans
+    - pour_rice
+    - pour_tea
+    #- pull_document_bag
+    #- pull_open_food_bag
+    - stack_baskets
+    - stack_blocks
+    - stir_coffee
+    - storage_bin_storage
+    - storage_plate
+    - fold_shirt
+    - fold_shorts
+    - unfold_towel
+    #- test_tubes_storage
+    #- wipe_table
+
+batch_size: 8
+num_workers: 12
+
+model:
+  mot_checkpoint_mixed_attn: false
+
+lr_scheduler_type: cosine
+learning_rate: 1.0e-4
+num_epochs: 1
+max_steps: 50000
+log_every: 10
+save_every: 20000
+eval_every: 20000
+
+gradient_accumulation_steps: 1
+weight_decay: 1.0e-2
+resume: null
