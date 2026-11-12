@@ -41,8 +41,8 @@ CAMERA_KEYS = [
     "observation.images.cam_wrist",
 ]
 DEFAULT_CAMERA_SPECS = {
-    "observation.images.cam_high": "036522071395",
-    "observation.images.cam_wrist": "323622272614",
+    "observation.images.cam_high": os.getenv("REAL_HIGH_CAMERA_SERIAL", "036522071395"),
+    "observation.images.cam_wrist": os.getenv("REAL_WRIST_CAMERA_SERIAL", "323622272614"),
 }
 DEFAULT_START_POS_DEG = np.asarray(
     [3.15, -2.35, 7.65, 69.75, 175.52, -89.94, 96.94],

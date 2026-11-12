@@ -413,7 +413,7 @@
       "source": "/home/robot2/deltawam/src/realman_deployment/README.md",
       "path": "fastwam/src/realman_deployment/README.md",
       "source_sha256": "54984729dc993730163eae978a4d7a596443d0c7d7157a2cc24ab76c9eb33a3d",
-      "export_sha256": "b2be3353200c86a0e61e6def064821e38f5a227fbf95e375522c98dfe0913bdb"
+      "export_sha256": "c65c587310ca9328d3e8ebc5874ea50d096911afb04a35cf5fa087fc5986bf74"
     },
     {
       "source": "/home/robot2/deltawam/src/realman_deployment/Robotic_Arm/__init__.py",
@@ -1241,7 +1241,7 @@
       "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/README.md",
       "path": "pi05/README.md",
       "source_sha256": "6f358104d3adf73f96b2c769ab208d750ca1181d5742116f9f4db1f0b020ccbf",
-      "export_sha256": "6f358104d3adf73f96b2c769ab208d750ca1181d5742116f9f4db1f0b020ccbf"
+      "export_sha256": "30ba6af01ad25978d418bfc3d5c2983a6fc998311472c97f8d03c56a2ddad0ff"
     },
     {
       "source": "/home/robot2/jhk/phywam-mope-real/robot-client-runtime/configs/pi05_realman_presets.toml",
@@ -1523,7 +1523,7 @@
       "source": "/home/robot2/PhyWAM_old_useless/scripts/evaluation/client_realman_on_machine.py",
       "path": "legacy/scripts/evaluation/client_realman_on_machine.py",
       "source_sha256": "caf8d1ed996b7a7bbe34863396c74418053bc7dcebcbfa0e21a55d1b80d1674e",
-      "export_sha256": "caf8d1ed996b7a7bbe34863396c74418053bc7dcebcbfa0e21a55d1b80d1674e"
+      "export_sha256": "86386ac38d1d4771dba577de6ab12038316102b30d4ac7683edef23d6929d9fc"
     },
     {
       "source": "/home/robot2/PhyWAM_old_useless/scripts/evaluation/client_pi05_real.py",
@@ -1626,16 +1626,25 @@
       "path": "legacy/openpi/openpi-client/src/openpi_client/websocket_client_policy.py",
       "source_sha256": "3085d69b5e2a673ec4baf2f5be92a14e7b0e76938f000e30a5f9cca5fc19d924",
       "export_sha256": "3085d69b5e2a673ec4baf2f5be92a14e7b0e76938f000e30a5f9cca5fc19d924"
+    },
+    {
+      "source": "/home/robot2/PhyWAM_old_useless/scripts/data/lerobot/meta/action_norm_stats.json",
+      "path": "configs/lingbot/action_norm_stats.json",
+      "source_sha256": "8b09bf307a5b6c6497897dc019e832692467bcb5dd3b2060b2d8e1f02d1a9c20",
+      "export_sha256": "8b09bf307a5b6c6497897dc019e832692467bcb5dd3b2060b2d8e1f02d1a9c20"
     }
   ],
   "modified_source_files": [
     "fastwam/src/realman_deployment/README.md",
     "fastwam/src/realman_deployment/tests/test_deployment.py",
+    "pi05/README.md",
+    "legacy/scripts/evaluation/client_realman_on_machine.py",
     "legacy/scripts/evaluation/client_pi05_real.py"
   ],
   "notes": [
     "Original source directories unchanged; large artifacts and credentials omitted.",
     "Legacy LingBot launcher includes only the executable body; credential-bearing history comments were removed.",
-    "The FastWAM test suite now imports RealManHardware and skips its optional undistributed checkpoint test."
+    "The FastWAM test suite now imports RealManHardware and skips its optional undistributed checkpoint test.",
+    "Public onboarding update: portable setup and launch scripts, user-facing READMEs, and workspace device defaults."
   ]
 }

@@ -11,3 +11,4 @@ PyYAML>=6
 toml>=0.10
 rich>=13
 typing-extensions>=4.12
+dm-tree>=0.1.8

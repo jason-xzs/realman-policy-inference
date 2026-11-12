@@ -1,6 +1,6 @@
-# RTC 与推理端优化代码定位
+# 推理调度与延迟
 
-这里按实际实现区分：推理/执行重叠、重规划动作对齐、传感器延迟，以及录像开销。搜索覆盖本机当前 `deltawam`、`realman_teleop_v2`、`PhyWAM_old_useless`、双臂 π0.5 runtime 及历史脚本。
+可分别从推理与执行重叠、重规划动作对齐、传感器采集和录像开销调整延迟。以下选项保留原有执行与动作校验逻辑。
 
 | 模型/路径 | 实现 | 启用方式/默认值 |
 | --- | --- | --- |
@@ -12,7 +12,7 @@
 | π0.5 | RR-DEP-006 每相机只保留最新一帧，不编码、不录像，模型输入转为 224×224 | `pi05/scripts/run_rr_dep_006.py`；历史实验入口，需要匹配原实验协议和参数 |
 | π0.5 | 当前 production runner 使用独立硬件 worker 和 watchdog；动作按 30 Hz 下发，慢调用后不突发补发 | 当前任务 preset；每个 chunk 后等待到位并稳定，再请求下一次推理 |
 
-## LingBot 异步预取：最接近 RTC 的已找到实现
+## LingBot 异步预取
 
 源码：[`client_realman_on_machine.py`](../legacy/scripts/evaluation/client_realman_on_machine.py)。
 
@@ -35,6 +35,6 @@
 
 当前入口是 [`production_pi05.py`](../pi05/src/robot_client_runtime/production_pi05.py)。后台 worker 和录像线程能减少主进程阻塞，但 `wait_for_chunk_completion()` 要求双臂最终反馈到位并稳定，然后才允许下一次 policy 请求；它没有异步预测重叠。直接修改这项约束属于新的控制算法，整理版本保留原逻辑。
 
-## 额外发现
+## 完整 RTC
 
-`/home/robot2/vla_class_pub/lerobot/src/lerobot/policies/rtc` 有通用 LeRobot RTC 实现，以及 pi0/pi05 的 RTC 测试。未找到它接到这台 RealMan 上的启动入口，因此没有把整套教学/第三方代码混入本仓库。若以后移植正式 RTC，可将其作为上游参考；本次不声称已完成真机集成。
+需要延迟前缀约束或动作 inpainting 时，可参考 [LeRobot RTC](https://huggingface.co/docs/lerobot/rtc)。本仓库的异步预取和动作块对齐不包含这套算法，接入时需要同时适配模型服务和机器人端调度。

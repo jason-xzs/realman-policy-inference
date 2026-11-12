@@ -1,95 +1,185 @@
-# RealMan 真机策略推理脚本
+# RealMan Policy Inference
 
-整理本机 **FastWAM、π0.5 / OpenPI、LingBot-VA** 的 RealMan 客户端、FastWAM 服务端和推理优化逻辑。保留已有行为及任务配置，原目录保持不变。模型权重、采集数据、录像、登录信息和运行缓存不入库。
+在 RealMan RM75 工作站运行 FastWAM、π0.5 和 LingBot-VA 策略。机器人端读取相机和关节状态，调用 GPU 服务器推理，再执行返回的动作。
 
-## 目录与原始位置
+| 策略 | 机器人 | 相机 | 服务连接 |
+| --- | --- | --- | --- |
+| FastWAM | 双臂 | 顶部 + 左腕 + 右腕 | HTTP；本仓库提供服务端 |
+| π0.5 / OpenPI | 双臂 | 顶部 + 左腕 + 右腕 | OpenPI WebSocket |
+| LingBot-VA | 左臂 | 顶部 + 左腕 | LingBot RealMan WebSocket |
 
-| 目录 | 内容 | 本机来源 |
-| --- | --- | --- |
-| [`fastwam/`](fastwam) | FastWAM HTTP 服务、双臂客户端、硬件适配、模型源码和配置 | `/home/robot2/deltawam` |
-| [`pi05/`](pi05) | 当前双臂 OpenPI 客户端、任务 preset、历史低延迟实现和离线测试 | `/home/robot2/jhk/phywam-mope-real/robot-client-runtime` |
-| [`legacy/scripts/evaluation/`](legacy/scripts/evaluation) | LingBot-VA 单臂客户端、早期 π0.5 单臂客户端、相机封装 | `/home/robot2/PhyWAM_old_useless/scripts/evaluation` |
-| [`legacy/openpi/openpi-client/`](legacy/openpi/openpi-client) | 本机配套 OpenPI WebSocket 客户端 | `/home/robot2/PhyWAM_old_useless/openpi/openpi-client` |
+支持动作块对齐、异步预取、后台相机采集和录像。VR 遥操作与训练数据采集见 [realman-vr-teleop](https://github.com/jason-xzs/realman-vr-teleop)。
 
-## RTC 或类似推理优化
+## 安装机器人端
 
-已找到 **LingBot 异步预取并与执行重叠、FastWAM 动作块对齐与后台采集、π0.5 低延迟无录像路径**。详细函数、参数、使用条件与局限见 **[`docs/inference_optimizations.md`](docs/inference_optimizations.md)**。
-
-本机这些 RealMan 脚本中未发现带延迟前缀约束/动作 inpainting 的完整 RTC 算法。LingBot 的异步预取最接近“推理与执行重叠”；π0.5 当前默认逐块执行并等待末端反馈稳定，再发下一次推理请求。仓库保留原有优化，没有新增未经真机验证的调度算法。
-
-## 机器人侧安装
-
-使用独立的 Python 3.11 环境，避免与 ROS 采集环境混用：
+需要 Ubuntu x86_64、Python 3.11 或 3.12。模型推理在 GPU 服务器运行，机器人端不需要安装 CUDA。
 
 ```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-client.txt
-pip install -e legacy/openpi/openpi-client
-pip install --no-deps -e pi05
+git clone https://github.com/jason-xzs/realman-policy-inference.git
+cd realman-policy-inference
+bash scripts/setup_client.sh
 ```
 
-真机运行还需要 RealSense USB 权限、独占的机械臂控制连接和 FFmpeg；录像默认使用 Intel VAAPI 编码，需要 `/dev/dri/renderD128`。仓库保留机器人 IP 和相机序列号的本机配置。
+安装脚本创建 `.venv`，安装 SDK 配套依赖与 OpenPI 客户端。后续启动脚本自动使用这个环境。
+
+已有 Conda 环境时可以指定其中的 Python，例如：
+
+```bash
+conda create -n realman python=3.11 -y
+conda activate realman
+PYTHON_BIN=python bash scripts/setup_client.sh
+```
+
+## 连接工作站
+
+默认设备配置与 VR 采集仓库一致：
+
+| 设备 | 地址 / 序列号 |
+| --- | --- |
+| 左臂 | `192.168.1.18:8080`，主机网口 `enx6c1ff7eccd8e` |
+| 右臂 | `192.168.1.19:8080`，主机网口 `enp89s0` |
+| 顶部相机 | `420122071413` |
+| 左腕相机 | `323622272614` |
+| 右腕相机 | `230422272673` |
+
+机械臂上电、相机接 USB 3 后配置网络：
+
+```bash
+bash scripts/setup_network.sh
+ping -c 2 192.168.1.18
+ping -c 2 192.168.1.19
+```
+
+更换网卡时，使用 `LEFT_IFACE`、`RIGHT_IFACE` 指定网口。开始推理前停止 VR 采集和其他占用相机、机械臂的程序。执行动作前确认工作空间和初始位姿，保持急停可触达。
 
 ## FastWAM
 
-GPU 服务端需要 FastWAM 的模型依赖与对应权重。`fastwam/pyproject.toml` 保留原始 CUDA/PyTorch 依赖清单，安装时按 GPU 环境匹配 wheel；客户端安装不需要完整 GPU 训练依赖。
+### GPU 服务器
 
-```bash
-# GPU 机器：权重旁需要匹配的 config.yaml 和 dataset_stats.json。
-CHECKPOINT=/path/to/checkpoints/weights/step_015000.pt \
-  bash fastwam/scripts/tasks/serve_realman_fastwam.sh
+准备 RealMan 微调权重、训练导出的 `config.yaml`、`dataset_stats.json`，以及配置引用的模型基础权重。默认查找结构为：
 
-# 机器人侧：读取真实设备并验证动作；不下发动作。
-SERVER_URL=http://127.0.0.1:18000 bash scripts/run_fastwam_client.sh --max-replans 2
-
-# 已核对现场配置后，下发动作并开启动作块对齐。
-EXECUTE=1 SERVER_URL=http://127.0.0.1:18000 \
-  bash scripts/run_fastwam_client.sh --align-action-chunk --action-align-max-skip 8
+```text
+run/
+├── config.yaml
+├── dataset_stats.json
+└── checkpoints/weights/step_015000.pt
 ```
 
-SSH 转发示例：`ssh -N -L 18000:127.0.0.1:8000 YOUR_GPU_HOST`。参数、夹爪迟滞、tracking gate、录像见 [`fastwam/src/realman_deployment/README.md`](fastwam/src/realman_deployment/README.md)。
-
-## π0.5 双臂客户端
-
-先生成适用于本仓库路径的本地配置，默认 `no_motion`、关闭录像。该配置被 Git 忽略，可编辑相机、服务身份、checkpoint、任务和运动参数：
+在 GPU 服务器克隆本仓库，激活模型环境。仓库依赖版本使用 CUDA 12.8 / PyTorch 2.7.1：
 
 ```bash
-python scripts/prepare_pi05_config.py
-python pi05/scripts/run_pi05_realman.py \
-  --config pi05/configs/pi05_realman_presets.local.toml \
-  --preset pi05-organize-15000
+pip install -e fastwam --extra-index-url https://download.pytorch.org/whl/cu128
+CHECKPOINT=/absolute/path/run/checkpoints/weights/step_015000.pt \
+  HOST=127.0.0.1 bash fastwam/scripts/tasks/serve_realman_fastwam.sh
 ```
 
-`no_motion` 会打开相机和机器人连接、读取状态并请求模型，但不发运动命令。完全离线检查使用 `pi05/scripts/check_pi05_environment.py`；其历史环境指纹需要按本仓库路径更新，详见 `pi05/docs/environment.md`。
-
-需要执行时，在本地 TOML 中将 `[default.execution] mode` 改为 `"execute"`，运行时保留原有终端确认流程。**原始受跟踪 preset 的默认值是 execute**，直接运行原始配置会进入执行路径。模型服务必须提供匹配的 OpenPI metadata、动作维度和 checkpoint 身份。这个主机仅找到 π0.5 客户端，GPU 服务端工程位于历史文档中的远端路径，未从远端取回。
-
-双臂策略输入是 left-first 16D，底层执行转换为 right-first 16D；与 FastWAM 的原始 left-first 28D 状态输入有区别。详见 [`pi05/docs/interface-contract.md`](pi05/docs/interface-contract.md)。
-
-## LingBot-VA 单臂异步版本
+在机器人主机另开终端，保持 SSH 转发连接。将 `GPU_HOST` 替换为自己的 SSH 主机名或 `user@address`：
 
 ```bash
-# 只验证 CLI，不连接设备或服务。
-bash scripts/run_lingbot_client.sh --help
+ssh -N -L 18000:127.0.0.1:8000 GPU_HOST
+```
 
-# 模拟观测 + 不下发动作；仍需匹配的 LingBot WebSocket 服务。
+### 机器人主机
+
+先读取真实设备并检查模型输出：
+
+```bash
+bash scripts/run_fastwam_client.sh --max-replans 2
+```
+
+确认相机和服务输出正常后，执行任务：
+
+```bash
+EXECUTE=1 bash scripts/run_fastwam_client.sh \
+  --instruction 'Place the three objects into the blue container.' \
+  --align-action-chunk
+```
+
+默认连接 `http://127.0.0.1:18000`，不录像。`Ctrl+C` 停止。使用其他服务地址时设置 `SERVER_URL`。
+
+## π0.5 / OpenPI
+
+GPU 服务器需运行经过 RealMan 数据适配的 OpenPI 模型服务，监听 `8020`。服务端需与任务配置中的 checkpoint、输入输出维度匹配；服务启动与接口要求见 [模型服务配置](docs/model_services.md#π05--openpi)。
+
+机器人主机建立 SSH 转发：
+
+```bash
+ssh -N -L 18200:127.0.0.1:8020 GPU_HOST
+```
+
+运行任务：
+
+```bash
+bash scripts/run_pi05_client.sh --preset pi05-organize-15000
+```
+
+首次运行自动生成 `pi05/configs/pi05_realman_presets.local.toml`，并填入当前仓库路径。默认只采集观测、请求一次推理，**不发送运动命令**。
+
+| 任务 preset | 任务 |
+| --- | --- |
+| `pi05-organize-15000` | 将物品放入蓝色容器 |
+| `pi05-sugar-15000` | 将小方块放入杯子 |
+| `pi05-bowls-15000` | 叠放纸碗 |
+
+执行任务时，编辑本地 TOML：
+
+```toml
+[default.execution]
+mode = "execute"
+```
+
+保留该段的其他配置项，再运行相同命令。按终端提示确认启动和归位；`Ctrl+C` 停止。更换权重时，更新对应任务段的 `expected_config`、`expected_checkpoint` 和 `prompt`，让它们与服务器实际返回的 metadata 一致。
+
+## LingBot-VA
+
+使用左臂和顶部、左腕两路相机。GPU 服务器需提供 `realman_va_socket_v1` 协议的 LingBot-VA 服务，接口见 [模型服务配置](docs/model_services.md#lingbot-va)。
+
+```bash
+ssh -N -L 18080:127.0.0.1:18080 GPU_HOST
+```
+
+先检查相机和服务输出：
+
+```bash
 bash scripts/run_lingbot_client.sh \
-  --server-host 127.0.0.1 --server-port 18080 \
-  --mock-observation --dry-run \
+  --task-text 'Place the brown cup in the white basin.' \
+  --dry-run --max-steps 2
+```
+
+执行任务，并让下一次推理与当前动作块执行重叠：
+
+```bash
+bash scripts/run_lingbot_client.sh \
+  --task-text 'Place the brown cup in the white basin.' \
+  --enable-robot --use-canfd \
   --mode async --disable-kv-cache --async-prefetch-after-actions 8
 ```
 
-连接真实相机时去掉 `--mock-observation`，提供匹配的训练数据统计 `REAL_DATASET_PATH` 或 CLI 统计参数。执行动作需要显式 `--enable-robot`；首次会归位，确认关节初始位姿适合现场再使用。异步预取必须关闭 KV cache，否则默认退回 `safe_sync`。早期单臂 π0.5 脚本保留于 `legacy/scripts/evaluation/client_pi05_real.py`，其规范化统计需另行提供。
+执行模式默认先归位并打开夹爪。任务结束按 `Ctrl+C`。启动脚本已绑定当前工作站的顶部、左腕相机，并加载 [动作统计](configs/lingbot/action_norm_stats.json)；使用其他训练权重时，通过 `REAL_ACTION_STATS_PATH` 指向匹配的统计文件。
 
-LingBot 的 GPU 服务端未在当前主机源码中找到，仓库不伪造服务实现。其单臂 WebSocket 协议与双臂 OpenPI/FastWAM 协议不能互换。
+## 常用选项
 
-## 离线验证
+| 场景 | 选项 |
+| --- | --- |
+| FastWAM 换相机 | `HIGH_CAMERA_ID`、`LEFT_CAMERA_ID`、`RIGHT_CAMERA_ID` |
+| FastWAM 跳过过时动作 | `--align-action-chunk --action-align-max-skip 8` |
+| FastWAM 等待实际关节到位 | `--tracking-gate --tracking-error-rad 0.05` |
+| FastWAM 录像 | `--record-dir recordings/task_001 --record-codec MJPG`；Intel 硬件编码可用 `h264_vaapi` |
+| π0.5 配置相机、速度、服务或录像 | 编辑自动生成的 `pi05_realman_presets.local.toml` |
+| LingBot 换相机 | `REAL_HIGH_CAMERA_SERIAL`、`REAL_WRIST_CAMERA_SERIAL` |
+| LingBot 选择预取时机 | `--async-prefetch-after-actions 0` 越早预取；`8` / `16` 使用更晚的观测 |
+| 指定其他 Python 环境 | `REALMAN_PYTHON=/path/to/python` |
 
-```bash
-PYTHONPATH=fastwam/src python -m unittest discover -s fastwam/src/realman_deployment/tests -v
-PYTHONPATH=fastwam/src python -m realman_deployment.simulate --replans 3 --actions-per-replan 4
-PYTHONPATH=pi05/src python -m unittest discover -s pi05/tests -v
-```
+各类推理优化的行为区别见 [推理调度与延迟](docs/inference_optimizations.md)。异步预取不包含完整 RTC 的延迟前缀约束或动作 inpainting。
 
-以上验证不启动真机或相机。整理时执行的检查结果见 [`docs/validation.md`](docs/validation.md)。来源和修改说明见 [`docs/source_manifest.json`](docs/source_manifest.json) 与 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
+## 排障
+
+| 问题 | 检查 |
+| --- | --- |
+| 连接模型服务失败 | GPU 服务是否启动，SSH 转发终端是否仍在运行，端口是否一致 |
+| π0.5 报 metadata mismatch | 本地任务段中的服务名称、checkpoint、状态和动作维度是否与服务一致 |
+| 相机无法启动 | 停止采集程序；检查 USB 3 连接、序列号、设备权限和相机占用 |
+| LingBot 报统计文件错误 | 使用匹配该 checkpoint 的 `action_norm_stats.json`，字段格式见模型服务文档 |
+| VAAPI 编码失败 | FastWAM 使用 `--record-codec MJPG` 或关闭录像；π0.5 在本地配置关闭录像 |
+
+模型协议和动作顺序见 [模型服务配置](docs/model_services.md)，第三方组件许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
